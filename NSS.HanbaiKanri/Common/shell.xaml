@@ -1,0 +1,35 @@
+﻿<Window x:Class="NSS.HanbaiKanri.Common.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://www.codeplex.com/prism"
+        xmlns:local="clr-namespace:NSS.HanbaiKanri.Common"
+        mc:Ignorable="d"
+        Title="shell" Height="600" Width="800">
+    <Grid Margin="2,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform Angle="-90" CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FF0B3B5D" Offset="0"/>
+                    <GradientStop Color="#FF198AD8" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Button Content="&lt;" Margin="0" FontFamily="Meiryo UI" FontWeight="ExtraBold" FontSize="20" Background="#FF2B6E9C" VerticalContentAlignment="Center" Foreground="White" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Width="50" Height="40"/>
+        </StackPanel>
+        <ContentControl prism:RegionManager.RegionName="main" />
+
+    </Grid>
+</Window>
