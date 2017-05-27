@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Prism.Mvvm;
 
 namespace NSS.HanbaiKanri.Common
 {
@@ -22,6 +23,16 @@ namespace NSS.HanbaiKanri.Common
         {
             // Shellを表示する
             ((Window)this.Shell).Show();
+        }
+
+        protected override void ConfigureViewModelLocator()
+        {
+            base.ConfigureViewModelLocator();
+            // ViewとViewModelの紐付ルール変更
+            ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(viewType =>
+            {
+                return Type.GetType(viewType.FullName + "Model");
+            });
         }
     }
 }
