@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NSS.HanbaiKanri.Common
+namespace NSS.HanbaiKanri.StartMenu
 {
     /// <summary>
-    /// shell.xaml の相互作用ロジック
+    /// test.xaml の相互作用ロジック
     /// </summary>
-    public partial class Shell : Window
+    public partial class test : UserControl
     {
-        public Shell()
+        public test()
         {
             InitializeComponent();
         }

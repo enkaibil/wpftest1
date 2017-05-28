@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NSS.HanbaiKanri.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace NSS.HanbaiKanri.MasterMeinte.Employee
     /// <summary>
     /// EmployeeView.xaml の相互作用ロジック
     /// </summary>
-    public partial class EmployeeView : Page
+    public partial class EmployeeView : UserControl, IHanbaiKanriView
     {
         public EmployeeView()
         {

@@ -1,5 +1,4 @@
-﻿using NSS.HanbaiKanri.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NSS.HanbaiKanri.StartMenu
+namespace NSS.HanbaiKanri.Common
 {
     /// <summary>
-    /// StartMenuView.xaml の相互作用ロジック
+    /// shell.xaml の相互作用ロジック
     /// </summary>
-    public partial class StartMenuView : UserControl, IHanbaiKanriView
+    public partial class ShellView : Window, IHanbaiKanriView
     {
-        public StartMenuView()
+        public ShellView()
         {
             InitializeComponent();
         }
