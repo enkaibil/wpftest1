@@ -28,6 +28,9 @@ namespace NSS.HanbaiKanri.Common
 
         public void btnBack_Click()
         {
+            // バックボタンが押された場合、
+            // リージョンに表示しているビューにNavigationTromイベントをキックさせるために空ページへの遷移を実行する。
+            this.RegionManager.RequestNavigate("main", string.Empty);
         }
     }
 }

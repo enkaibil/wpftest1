@@ -13,17 +13,31 @@ namespace NSS.HanbaiKanri.StartMenu
 {
     public class StartMenuViewModel : BaseViewModel
     {
-
-        public DelegateCommand btnMMEmpClick_Cmd { get; set; }
+        public DelegateCommand CMD_btnMMEmp_Click { get; }
 
         public StartMenuViewModel()
         {
-            btnMMEmpClick_Cmd = new DelegateCommand(btnMMEmpClick);
+            CMD_btnMMEmp_Click = new DelegateCommand(btnMMEmp_Click);
         }
 
-        private void btnMMEmpClick()
+        private void btnMMEmp_Click()
         {
             this.RegionManager.RequestNavigate("main", nameof(EmployeeView));
+        }
+
+        private void btnBack_Click()
+        {
+            int i = 1;
+        }
+
+        public override void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            int i = 1;
+        }
+
+        public override void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            int i = 1;
         }
     }
 }
