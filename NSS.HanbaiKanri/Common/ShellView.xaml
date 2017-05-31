@@ -41,6 +41,6 @@
                 FontFamily="Meiryo UI" FontWeight="ExtraBold" FontSize="20" Background="#FF2B6E9C" Foreground="White" 
                 HorizontalAlignment="Left" Width="50" Grid.Row="0"
                 Command="{Binding CMD_btnBack_Click}" />
-        <ContentControl prismLib:RegionManager.RegionName="main" Grid.Row="1" />
+        <ContentControl Name="main" prismLib:RegionManager.RegionName="main" Grid.Row="1" />
     </Grid>
 </Window>

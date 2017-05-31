@@ -45,6 +45,7 @@ namespace NSS.HanbaiKanri.Common
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
+            int i = 1;
         }
 
         /// <summary>
@@ -53,6 +54,7 @@ namespace NSS.HanbaiKanri.Common
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedFrom(NavigationContext navigationContext)
         {
+            int i = 1;
         }
 
         /// <summary>

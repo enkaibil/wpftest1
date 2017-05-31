@@ -10,7 +10,7 @@
 
     <StackPanel Background="#FFECE8E8">
         <Button Content="社員マスタ" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"
-                Command="{Binding btnMMEmpClick_Cmd}" />
+                Command="{Binding CMD_btnMMEmp_Click}" />
         <Button Content="閉じる" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
 
     </StackPanel>

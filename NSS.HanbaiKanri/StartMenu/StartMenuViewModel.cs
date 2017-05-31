@@ -32,11 +32,14 @@ namespace NSS.HanbaiKanri.StartMenu
 
         public override void OnNavigatedFrom(NavigationContext navigationContext)
         {
+            base.OnNavigatedFrom(navigationContext);
+
             int i = 1;
         }
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
+
             int i = 1;
         }
     }

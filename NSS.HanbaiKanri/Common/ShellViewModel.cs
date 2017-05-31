@@ -14,6 +14,7 @@ namespace NSS.HanbaiKanri.Common
     {
         public DelegateCommand CMD_Form_Loaded { get; }
         public DelegateCommand CMD_btnBack_Click { get; }
+        public DelegateCommand<object> CMD_Region_Chenged { get; }
 
         public ShellViewModel()
         {
