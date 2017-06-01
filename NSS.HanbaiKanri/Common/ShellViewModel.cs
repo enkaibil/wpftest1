@@ -12,9 +12,11 @@ namespace NSS.HanbaiKanri.Common
 {
     public class ShellViewModel : BaseViewModel
     {
+        /// <summary>ウィンドウタイトル</summary>
+        public override string Title { get { return string.Empty; } }
+
         public DelegateCommand CMD_Form_Loaded { get; }
         public DelegateCommand CMD_btnBack_Click { get; }
-        public DelegateCommand<object> CMD_Region_Chenged { get; }
 
         public ShellViewModel()
         {

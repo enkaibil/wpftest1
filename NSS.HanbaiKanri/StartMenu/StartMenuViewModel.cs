@@ -13,6 +13,9 @@ namespace NSS.HanbaiKanri.StartMenu
 {
     public class StartMenuViewModel : BaseViewModel
     {
+        /// <summary>ウィンドウタイトル</summary>
+        public override string Title { get { return "スタートメニュー"; } }
+
         public DelegateCommand CMD_btnMMEmp_Click { get; }
 
         public StartMenuViewModel()

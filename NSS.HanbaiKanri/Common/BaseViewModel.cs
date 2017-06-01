@@ -9,8 +9,11 @@ using Microsoft.Practices.Unity;
 
 namespace NSS.HanbaiKanri.Common
 {
-    public class BaseViewModel : BindableBase, IConfirmNavigationRequest
+    public abstract class BaseViewModel : BindableBase, IConfirmNavigationRequest
     {
+        /// <summary>ウィンドウタイトル</summary>
+        public abstract string Title { get; }
+
         [Dependency]
         public IRegionManager RegionManager { get; set; }
 
