@@ -9,6 +9,8 @@ using System.Windows;
 using Prism.Mvvm;
 using System.Windows.Controls;
 using System.Reflection;
+using Prism.Events;
+using NSS.HanbaiKanri.Common.Models;
 
 namespace NSS.HanbaiKanri.Common
 {
@@ -37,6 +39,12 @@ namespace NSS.HanbaiKanri.Common
             });
         }
 
+        protected override void ConfigureModuleCatalog()
+        {
+            base.ConfigureModuleCatalog();
+
+
+        }
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Prism.Mvvm;
 using Prism.Regions;
 using Microsoft.Practices.Unity;
+using NSS.HanbaiKanri.Common.Models;
+using System.Windows.Controls;
+using Prism.Events;
 
 namespace NSS.HanbaiKanri.Common
 {
@@ -13,6 +16,12 @@ namespace NSS.HanbaiKanri.Common
     {
         /// <summary>ウィンドウタイトル</summary>
         public abstract string Title { get; }
+
+        [Dependency]
+        public PageInfoPublisher pub { get; set; }
+
+        [Dependency]
+        public IEventAggregator EventAggregator { get; set; }
 
         [Dependency]
         public IRegionManager RegionManager { get; set; }
@@ -26,7 +35,7 @@ namespace NSS.HanbaiKanri.Common
         }
         #endregion
 
-        protected void RequestNavigate(IHanbaiKanriView targetView)
+        protected void RequestNavigate(UserControl targetView)
         {
             this.RegionManager.RequestNavigate("main", nameof(targetView));
         }
