@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Prism.Regions;
 using NSS.HanbaiKanri.StartMenu;
+using NSS.HanbaiKanri.Common.Models;
 
 namespace NSS.HanbaiKanri.MasterMeinte.Employee
 {
@@ -22,7 +23,7 @@ namespace NSS.HanbaiKanri.MasterMeinte.Employee
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
-            
+
             this.RegionManager.RequestNavigate("main", nameof(StartMenuView));
         }
     }

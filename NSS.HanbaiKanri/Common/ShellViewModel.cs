@@ -16,9 +16,14 @@ namespace NSS.HanbaiKanri.Common
 {
     public class ShellViewModel : BaseViewModel
     {
-        public PageInfoSubscriber sub = new PageInfoSubscriber();
-
-        public HeaderInfoModel HeaderInfo { get; set; }
+        #region MODELS
+        public HeaderInfoModel HeaderInfo
+        {
+            get { return _headerInfo; }
+            set { SetProperty(ref _headerInfo, value); }
+        }
+        private HeaderInfoModel _headerInfo;
+        #endregion
 
         /// <summary>ウィンドウタイトル</summary>
         public override string Title { get { return "BLANK"; } }
@@ -31,21 +36,25 @@ namespace NSS.HanbaiKanri.Common
         /// </summary>
         public ShellViewModel()
         {
-            if (this.EventAggregator == null) EventAggregator = new EventAggregator();
-
-            // Model初期化
-            HeaderInfo = new HeaderInfoModel(EventAggregator, sub);
-
             // イベント定義
             CMD_Form_Loaded = new DelegateCommand(From_Loaded);
             CMD_btnBack_Click = new DelegateCommand(btnBack_Click);
         }
 
+        /// <summary>
+        /// 画面初期表示イベント
+        /// </summary>
         public void From_Loaded()
         {
+            // Model初期化
+            HeaderInfo = new HeaderInfoModel(EventAggregator);
+
             this.RegionManager.RequestNavigate("main", nameof(StartMenuView));
         }
 
+        /// <summary>
+        /// 戻るボタンクリックイベント
+        /// </summary>
         public void btnBack_Click()
         {
             // バックボタンが押された場合、

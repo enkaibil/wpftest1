@@ -18,9 +18,6 @@ namespace NSS.HanbaiKanri.Common
         public abstract string Title { get; }
 
         [Dependency]
-        public PageInfoPublisher pub { get; set; }
-
-        [Dependency]
         public IEventAggregator EventAggregator { get; set; }
 
         [Dependency]
@@ -52,21 +49,20 @@ namespace NSS.HanbaiKanri.Common
         }
 
         /// <summary>
-        /// 画面から遷移する前に呼び出されるメソッド
+        /// 画面に遷移してきたときに呼び出されるメソッド
         /// </summary>
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
-            int i = 1;
         }
 
         /// <summary>
-        /// 画面に遷移してきたときに呼び出されるメソッド
+        /// 画面から遷移する前に呼び出されるメソッド
         /// </summary>
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            int i = 1;
+            PageInfoPubSubEvent.Publish(this.EventAggregator, this);
         }
 
         /// <summary>

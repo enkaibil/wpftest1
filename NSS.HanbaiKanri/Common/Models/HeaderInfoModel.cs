@@ -18,9 +18,9 @@ namespace NSS.HanbaiKanri.Common.Models
             set { SetProperty(ref _fromtitle, value); }
         }
 
-        public HeaderInfoModel(IEventAggregator eventAggregator, PageInfoSubscriber sub)
+        public HeaderInfoModel(IEventAggregator eventAggregator)
         {
-            sub.Subscribe(eventAggregator, SetHeader);
+            PageInfoPubSubEvent.Subscribe(eventAggregator, SetHeader);
         }
 
         public void SetHeader(BaseViewModel targetViewModel)

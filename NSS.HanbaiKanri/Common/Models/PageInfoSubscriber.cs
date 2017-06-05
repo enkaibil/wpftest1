@@ -14,7 +14,7 @@ namespace NSS.HanbaiKanri.Common.Models
         public void Subscribe(IEventAggregator eventAggregator, Action<BaseViewModel> kickMethod)
         {
             eventAggregator
-                .GetEvent<PubSubEvent<BaseViewModel>>()
+                .GetEvent<PageInfoPubSubEvent>()
                 .Subscribe(kickMethod, ThreadOption.UIThread);
         }
     }

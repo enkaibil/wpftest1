@@ -11,13 +11,10 @@ namespace NSS.HanbaiKanri.Common.Models
 {
     public class PageInfoPublisher : BindableBase
     {
-        [Dependency]
-        private IEventAggregator EventAggregator { get; set; }
-
-        public void Publish(BaseViewModel me)
+        public void Publish(IEventAggregator eventAggregator, BaseViewModel me)
         {
-            this.EventAggregator
-                .GetEvent<PubSubEvent<BaseViewModel>>()
+            eventAggregator
+                .GetEvent<PageInfoPubSubEvent>()
                 .Publish(me);
         }
     }
