@@ -16,14 +16,12 @@ namespace NSS.HanbaiKanri.Common
 {
     public class ShellViewModel : BaseViewModel
     {
-        #region MODELS
         public HeaderInfoModel HeaderInfo
         {
             get { return _headerInfo; }
             set { SetProperty(ref _headerInfo, value); }
         }
         private HeaderInfoModel _headerInfo;
-        #endregion
 
         /// <summary>ウィンドウタイトル</summary>
         public override string Title { get { return "BLANK"; } }
@@ -39,6 +37,7 @@ namespace NSS.HanbaiKanri.Common
             // イベント定義
             CMD_Form_Loaded = new DelegateCommand(From_Loaded);
             CMD_btnBack_Click = new DelegateCommand(btnBack_Click);
+
         }
 
         /// <summary>
@@ -57,9 +56,8 @@ namespace NSS.HanbaiKanri.Common
         /// </summary>
         public void btnBack_Click()
         {
-            // バックボタンが押された場合、
-            // リージョンに表示しているビューにNavigationTromイベントをキックさせるために空ページへの遷移を実行する。
-            this.RegionManager.RequestNavigate("main", string.Empty);
+            // バックボタンが押された場合
+            BackButtonClickPubSubEvent.Publish(this.EventAggregator);
         }
     }
 }

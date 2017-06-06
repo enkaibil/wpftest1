@@ -104,10 +104,9 @@
     </ApplicationDefinition>
     <Compile Include="Common\Bootstrapper.cs" />
     <Compile Include="Common\IHanbaiKanriView.cs" />
+    <Compile Include="Common\Models\BackButtonClickPubSubEvent.cs" />
     <Compile Include="Common\Models\HeaderInfoModel.cs" />
     <Compile Include="Common\Models\PageInfoPubSubEvent.cs" />
-    <Compile Include="Common\Models\PageInfoPublisher.cs" />
-    <Compile Include="Common\Models\PageInfoSubscriber.cs" />
     <Compile Include="Common\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>

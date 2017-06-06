@@ -18,12 +18,17 @@ namespace NSS.HanbaiKanri.MasterMeinte.Employee
         public override void OnNavigatedFrom(NavigationContext navigationContext)
         {
             base.OnNavigatedFrom(navigationContext);
+
         }
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
 
+        }
+
+        protected override void OnBackButtonClick()
+        {
             this.RegionManager.RequestNavigate("main", nameof(StartMenuView));
         }
     }

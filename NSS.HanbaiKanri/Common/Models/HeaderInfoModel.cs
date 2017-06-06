@@ -11,13 +11,18 @@ namespace NSS.HanbaiKanri.Common.Models
 {
     public class HeaderInfoModel : BindableBase
     {
-        public string _fromtitle;
+        /// <summary>画面タイトル</summary>
         public string FormTitle
         {
             get { return _fromtitle; }
             set { SetProperty(ref _fromtitle, value); }
         }
+        private string _fromtitle;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="eventAggregator">DIコンテナ</param>
         public HeaderInfoModel(IEventAggregator eventAggregator)
         {
             PageInfoPubSubEvent.Subscribe(eventAggregator, SetHeader);

@@ -31,7 +31,7 @@ namespace NSS.HanbaiKanri.StartMenu
         /// </summary>
         public void From_Loaded()
         {
-            PageInfoPubSubEvent.Publish(this.EventAggregator, this);
+            //PageInfoPubSubEvent.Publish(this.EventAggregator, this);
         }
 
         private void btnMMEmp_Click()
@@ -47,14 +47,11 @@ namespace NSS.HanbaiKanri.StartMenu
         public override void OnNavigatedFrom(NavigationContext navigationContext)
         {
             base.OnNavigatedFrom(navigationContext);
-
-            int i = 1;
         }
 
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
-
-            int i = 1;
+            base.OnNavigatedTo(navigationContext);
         }
     }
 }

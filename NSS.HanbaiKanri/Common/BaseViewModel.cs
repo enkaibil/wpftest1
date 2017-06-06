@@ -9,6 +9,7 @@ using Microsoft.Practices.Unity;
 using NSS.HanbaiKanri.Common.Models;
 using System.Windows.Controls;
 using Prism.Events;
+using System.Diagnostics;
 
 namespace NSS.HanbaiKanri.Common
 {
@@ -37,6 +38,11 @@ namespace NSS.HanbaiKanri.Common
             this.RegionManager.RequestNavigate("main", nameof(targetView));
         }
 
+        protected virtual void OnBackButtonClick()
+        {
+            Debug.WriteLine("OnBackButtonClick");
+        }
+
         #region INavigationAwareインターフェースメンバ
         /// <summary>
         /// 一度生成された画面のインスタンスを再使用するかを判定します。
@@ -54,6 +60,15 @@ namespace NSS.HanbaiKanri.Common
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
+            if (this is ShellViewModel)
+            {
+            }
+            else
+            {
+                PageInfoPubSubEvent.Publish(this.EventAggregator, this);
+            }
+
+            BackButtonClickPubSubEvent.Subscribe(this.EventAggregator, OnBackButtonClick);
         }
 
         /// <summary>
@@ -62,7 +77,6 @@ namespace NSS.HanbaiKanri.Common
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            PageInfoPubSubEvent.Publish(this.EventAggregator, this);
         }
 
         /// <summary>
