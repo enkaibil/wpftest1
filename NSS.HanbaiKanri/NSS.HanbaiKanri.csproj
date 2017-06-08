@@ -103,6 +103,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\Bootstrapper.cs" />
+    <Compile Include="Common\Controls\MenuPanel\Views\MenuPanel.xaml.cs">
+      <DependentUpon>MenuPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\IHanbaiKanriView.cs" />
     <Compile Include="Common\Models\BackButtonClickPubSubEvent.cs" />
     <Compile Include="Common\Models\HeaderInfoModel.cs" />
@@ -123,6 +126,10 @@
     <Compile Include="StartMenu\test.xaml.cs">
       <DependentUpon>test.xaml</DependentUpon>
     </Compile>
+    <Page Include="Common\Controls\MenuPanel\Views\MenuPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Common\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,6 +178,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Common\Controls\MenuPanel\ViewModels\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
