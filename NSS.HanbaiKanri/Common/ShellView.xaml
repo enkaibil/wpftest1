@@ -1,4 +1,4 @@
-﻿<Window
+﻿<Window xmlns:MenuItem="clr-namespace:NSS.HanbaiKanri.Common.Controls.MenuItem" 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,10 +6,12 @@
         xmlns:prism="http://www.codeplex.com/prism"
         xmlns:prismLib="http://prismlibrary.com/"
         xmlns:local="clr-namespace:NSS.HanbaiKanri.Common"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Interactivity="clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.NET45" x:Class="NSS.HanbaiKanri.Common.ShellView"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:Interactivity="clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.NET45"
+        x:Class="NSS.HanbaiKanri.Common.ShellView"
         mc:Ignorable="d"
         prismLib:ViewModelLocator.AutoWireViewModel="True"
-        Title="shell" Height="711" Width="1012">
+        Title="shell" Height="711" Width="1012" MinWidth="1012" MinHeight="711">
     <i:Interaction.Triggers>
         <i:EventTrigger>
             <i:InvokeCommandAction x:Name="FormLoad" Command="{Binding CMD_Form_Loaded}" />
@@ -44,6 +46,7 @@
                    FontSize="24" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"
                    Margin="5,0,0,0" Foreground="White" />
         </StackPanel>
+        <!-- 1000 x 640 デフォルトサイズ-->
         <ContentControl Name="main" prismLib:RegionManager.RegionName="main" Grid.Row="1" />
     </Grid>
 </Window>

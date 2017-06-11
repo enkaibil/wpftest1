@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
@@ -103,8 +104,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\Bootstrapper.cs" />
-    <Compile Include="Common\Controls\MenuPanel\Views\MenuPanel.xaml.cs">
-      <DependentUpon>MenuPanel.xaml</DependentUpon>
+    <Compile Include="Common\Controls\MenuItem\HamburgerMenuItem.xaml.cs">
+      <DependentUpon>HamburgerMenuItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Controls\MenuPanel\HamburgerMenuPanel.xaml.cs">
+      <DependentUpon>HamburgerMenuPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\IHanbaiKanriView.cs" />
     <Compile Include="Common\Models\BackButtonClickPubSubEvent.cs" />
@@ -126,7 +130,11 @@
     <Compile Include="StartMenu\test.xaml.cs">
       <DependentUpon>test.xaml</DependentUpon>
     </Compile>
-    <Page Include="Common\Controls\MenuPanel\Views\MenuPanel.xaml">
+    <Page Include="Common\Controls\MenuItem\HamburgerMenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\Controls\MenuPanel\HamburgerMenuPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,6 +145,10 @@
     <Page Include="MasterMeinte\Employee\EmployeeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Simple Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="StartMenu\StartMenuView.xaml">
       <SubType>Designer</SubType>
@@ -178,8 +190,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\Controls\MenuPanel\ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

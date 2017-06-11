@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NSS.HanbaiKanri.Common.Controls.MenuPanel.Views
+namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
 {
     /// <summary>
     /// MenuPanel.xaml の相互作用ロジック
     /// </summary>
-    public partial class MenuPanel : UserControl
+    public partial class HamburgerMenuPanel : UserControl
     {
-        public MenuPanel()
+        public HamburgerMenuPanel()
         {
             InitializeComponent();
         }
