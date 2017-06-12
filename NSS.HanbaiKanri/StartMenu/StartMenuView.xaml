@@ -22,13 +22,12 @@
             <ColumnDefinition Width="30"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <MenuPanel:HamburgerMenuPanel Grid.Column="0">
-            <MenuItem:HamburgerMenuItem Height="25" Alias="〇" Caption="---" Command="{Binding CMD_btnMMEmp_Click}" />
-        </MenuPanel:HamburgerMenuPanel>
         <StackPanel Grid.Column="1" Background="#FFECE8E8">
             <Button Content="社員マスタ" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="279"
                     Command="{Binding CMD_btnMMEmp_Click}" Height="45" />
             <Button Content="閉じる" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="279" Height="45"/>
+
+            <MenuPanel:HamburgerMenuPanel Width="30" />
 
             <MenuItem:HamburgerMenuItem Grid.Column="0" Height="25" Alias="〇" Caption="その２" Command="{Binding CMD_btnMMEmp_Click}" />
 

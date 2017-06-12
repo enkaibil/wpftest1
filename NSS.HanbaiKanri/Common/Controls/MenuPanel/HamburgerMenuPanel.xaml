@@ -9,10 +9,16 @@
     <ListView>
         <ListView.Template>
             <ControlTemplate>
-                <DockPanel>
-                    <Button DockPanel.Dock="Top" Content="&#x2630;" />
-                    <Popup IsOpen="True">
-                        <ItemsPresenter></ItemsPresenter>
+                <DockPanel x:Name="bbb" Width="30">
+                    <CheckBox x:Name="chkBox" DockPanel.Dock="Top" Visibility="Hidden" />
+                    <Button x:Name="aaa" DockPanel.Dock="Top" Content="&#x2630;" />
+                    <ItemsPresenter></ItemsPresenter>
+  
+                    <Popup PlacementTarget="{Binding ElementName=chkBox}" Placement="Bottom" IsOpen="True" Width="200">
+                        <StackPanel Background="#FF9CEE63">
+                            <MenuItem:HamburgerMenuItem Alias="&#x2630;" Caption="メニュー" />
+                        </StackPanel>
+
                     </Popup>
                 </DockPanel>
             </ControlTemplate>

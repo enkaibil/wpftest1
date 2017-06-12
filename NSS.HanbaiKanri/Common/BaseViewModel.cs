@@ -60,14 +60,13 @@ namespace NSS.HanbaiKanri.Common
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
-            if (this is ShellViewModel)
-            {
-            }
-            else
+            // シェル画面以外であればページ情報イベントを発行する。
+            if (!(this is ShellViewModel))
             {
                 PageInfoPubSubEvent.Publish(this.EventAggregator, this);
             }
 
+            // バックボタン押下イベントを購読する。
             BackButtonClickPubSubEvent.Subscribe(this.EventAggregator, OnBackButtonClick);
         }
 
