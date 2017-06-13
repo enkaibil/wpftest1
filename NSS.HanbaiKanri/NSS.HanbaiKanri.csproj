@@ -110,6 +110,7 @@
     <Compile Include="Common\Controls\MenuPanel\HamburgerMenuPanel.xaml.cs">
       <DependentUpon>HamburgerMenuPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\Controls\MenuPanel\HamburgerMenuPanelViewModel.cs" />
     <Compile Include="Common\IHanbaiKanriView.cs" />
     <Compile Include="Common\Models\BackButtonClickPubSubEvent.cs" />
     <Compile Include="Common\Models\HeaderInfoModel.cs" />

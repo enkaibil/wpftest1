@@ -18,34 +18,37 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
     /// <summary>
     /// MenuPanel.xaml の相互作用ロジック
     /// </summary>
-    public partial class HamburgerMenuPanel : UserControl
+    public partial class HamburgerMenuPanel : ListBox
     {
         #region 依存関係プロパティ定義
 
-        /// <summary>
-        /// エイリアスアイコン
-        /// </summary>
-        public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register(
-            "ItemsSource",
-            typeof(IEnumerable<object>),
-            typeof(HamburgerMenuPanel),
-            new FrameworkPropertyMetadata());
-        #endregion
+        ///// <summary>
+        ///// エイリアスアイコン
+        ///// </summary>
+        //public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register(
+        //    "ItemsSource",
+        //    typeof(IEnumerable<object>),
+        //    typeof(HamburgerMenuPanel),
+        //    new FrameworkPropertyMetadata());
+        //#endregion
 
-        #region CLRラッパープロパティ
-        /// <summary>
-        /// エイリアスアイコン
-        /// </summary>
-        public IEnumerable<object> ItemsSource
-        {
-            get { return (IEnumerable<object>)GetValue(ItemsSourceProperty); }
-            set { SetValue(ItemsSourceProperty, value); }
-        }
+        //#region CLRラッパープロパティ
+        ///// <summary>
+        ///// エイリアスアイコン
+        ///// </summary>
+        //public IEnumerable<object> ItemsSource
+        //{
+        //    get { return (IEnumerable<object>)GetValue(ItemsSourceProperty); }
+        //    set { SetValue(ItemsSourceProperty, value); }
+        //}
+
         #endregion
 
         public HamburgerMenuPanel()
         {
             InitializeComponent();
+
+            this.DataContext = new HamburgerMenuPanelViewModel();
         }
     }
 }
