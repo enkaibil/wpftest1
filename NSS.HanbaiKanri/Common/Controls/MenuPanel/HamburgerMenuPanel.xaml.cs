@@ -20,6 +20,29 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
     /// </summary>
     public partial class HamburgerMenuPanel : UserControl
     {
+        #region 依存関係プロパティ定義
+
+        /// <summary>
+        /// エイリアスアイコン
+        /// </summary>
+        public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register(
+            "ItemsSource",
+            typeof(IEnumerable<object>),
+            typeof(HamburgerMenuPanel),
+            new FrameworkPropertyMetadata());
+        #endregion
+
+        #region CLRラッパープロパティ
+        /// <summary>
+        /// エイリアスアイコン
+        /// </summary>
+        public IEnumerable<object> ItemsSource
+        {
+            get { return (IEnumerable<object>)GetValue(ItemsSourceProperty); }
+            set { SetValue(ItemsSourceProperty, value); }
+        }
+        #endregion
+
         public HamburgerMenuPanel()
         {
             InitializeComponent();

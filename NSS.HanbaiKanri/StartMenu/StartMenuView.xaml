@@ -9,7 +9,7 @@
       x:Class="NSS.HanbaiKanri.StartMenu.StartMenuView"
       prism:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d" 
-      d:DesignHeight="640" d:DesignWidth="1000">
+      d:DesignHeight="640" d:DesignWidth="1000" Loaded="UserControl_Loaded">
 
     <i:Interaction.Triggers>
         <i:EventTrigger>
@@ -27,7 +27,10 @@
                     Command="{Binding CMD_btnMMEmp_Click}" Height="45" />
             <Button Content="閉じる" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="279" Height="45"/>
 
-            <MenuPanel:HamburgerMenuPanel Width="30" />
+            <MenuPanel:HamburgerMenuPanel x:Name="pnl" Width="30" Height="100">
+                <MenuItem:HamburgerMenuItem Grid.Column="0" Height="25" Alias="A" Caption="その２" Command="{Binding CMD_btnMMEmp_Click}" />
+                <!--<MenuItem:HamburgerMenuItem Grid.Column="0" Height="25" Alias="A" Caption="その２" Command="{Binding CMD_btnMMEmp_Click}" />-->
+            </MenuPanel:HamburgerMenuPanel>
 
             <MenuItem:HamburgerMenuItem Grid.Column="0" Height="25" Alias="〇" Caption="その２" Command="{Binding CMD_btnMMEmp_Click}" />
 

@@ -25,5 +25,15 @@ namespace NSS.HanbaiKanri.StartMenu
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            int a = 1;
+
+            if (pnl.Content == null)
+            {
+                a = 0;
+            }
+        }
     }
 }

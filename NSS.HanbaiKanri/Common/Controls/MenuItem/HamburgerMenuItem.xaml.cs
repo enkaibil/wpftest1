@@ -39,6 +39,7 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuItem
             typeof(string),
             typeof(HamburgerMenuItem),
             new FrameworkPropertyMetadata("メニュー"));
+
         /// <summary>
         /// コマンド
         /// </summary>
