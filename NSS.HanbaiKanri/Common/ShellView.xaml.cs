@@ -17,7 +17,7 @@ namespace NSS.HanbaiKanri.Common
     /// <summary>
     /// shell.xaml の相互作用ロジック
     /// </summary>
-    public partial class ShellView : Window, IHanbaiKanriView
+    public partial class ShellView : Window
     {
         public ShellView()
         {

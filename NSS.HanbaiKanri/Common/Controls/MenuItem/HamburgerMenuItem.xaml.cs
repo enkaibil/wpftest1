@@ -41,6 +41,15 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuItem
             new FrameworkPropertyMetadata("メニュー"));
 
         /// <summary>
+        /// メニュー展開フラグ
+        /// </summary>
+        public static readonly DependencyProperty IsOpenProperty = DependencyProperty.Register(
+            "IsOpen",
+            typeof(bool),
+            typeof(HamburgerMenuItem),
+            new FrameworkPropertyMetadata(false));
+
+        /// <summary>
         /// コマンド
         /// </summary>
         public static readonly DependencyProperty CommandProperty = DependencyProperty.Register(
@@ -68,6 +77,15 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuItem
         {
             get { return (string)GetValue(CaptionProperty); }
             set { SetValue(CaptionProperty, value); }
+        }
+
+        /// <summary>
+        /// メニュー展開フラグ
+        /// </summary>
+        public bool IsOpen
+        {
+            get { return (bool)GetValue(IsOpenProperty); }
+            set { SetValue(IsOpenProperty, value); }
         }
 
         /// <summary>

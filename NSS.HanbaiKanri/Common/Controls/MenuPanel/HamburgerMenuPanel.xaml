@@ -7,36 +7,36 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             xmlns:local="clr-namespace:NSS.HanbaiKanri.Common.Controls.MenuPanel">
     <ListBox.Template>
-        <ControlTemplate TargetType="ListBox">
-            <DockPanel x:Name="basePanel" Width="30">
-                <Grid DockPanel.Dock="Top">
+        <ControlTemplate TargetType="ItemsControl">
+            <DockPanel x:Name="basePanel" Background="{StaticResource MenuBackColor}">
+                <Grid DockPanel.Dock="Top" Loaded="Grid_Loaded">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20" />
                         <RowDefinition Height="30" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <CheckBox x:Name="chkBox" Grid.Row="0" Visibility="Hidden" IsChecked="{Binding IsChecked}" />
-                    <MenuItem:HamburgerMenuItem Grid.Row="1" Alias="&#x2630;" Command="{Binding CMD_btnMenu_Click}"/>
-                    <!--<Button x:Name="aaa" Grid.Row="1" Content="&#x2630;" />-->
+                    <MenuItem:HamburgerMenuItem x:Name="menuBtn" Grid.Row="1" Alias="&#x2630;" Command="{Binding CMD_btnMenu_Click}"/>
                     <StackPanel Grid.Row="2">
                         <ItemsPresenter />
                     </StackPanel>
                 </Grid>
 
-                <Popup PlacementTarget="{Binding ElementName=chkBox}" Placement="Bottom" IsOpen="{Binding IsChecked, ElementName=chkBox}" Width="200">
-                    <StackPanel Background="#FF9CEE63">
+                <Popup PlacementTarget="{Binding ElementName=chkBox}" Placement="Bottom" Width="200"
+                       IsOpen="{Binding IsChecked, ElementName=chkBox}">
+                    <StackPanel>
                         <MenuItem:HamburgerMenuItem Alias="&#x2630;" Caption="メニュー" Command="{Binding CMD_btnMenu_Click}" />
+                        
                     </StackPanel>
-
                 </Popup>
             </DockPanel>
         </ControlTemplate>
     </ListBox.Template>
-    <ListBox.ItemsPanel>
+    <ItemsControl.ItemsPanel>
         <ItemsPanelTemplate>
             <StackPanel />
         </ItemsPanelTemplate>
-    </ListBox.ItemsPanel>
+    </ItemsControl.ItemsPanel>
 
     <!--<ListView FontFamily="Segoe UI Symbol" FontSize="14">
         <ListView.View>
@@ -45,13 +45,15 @@
                 <GridViewColumn Header="メニュー" Width="150" />
             </GridView>
         </ListView.View>
-        --><!--<ListView.Template>
+        -->
+    <!--<ListView.Template>
             <ControlTemplate>
                     
             </ControlTemplate>
         </ListView.Template>
         <ItemsPanelTemplate>
 
-        </ItemsPanelTemplate>--><!--
+        </ItemsPanelTemplate>-->
+    <!--
     </ListView>-->
 </ListBox>

@@ -111,7 +111,6 @@
       <DependentUpon>HamburgerMenuPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\Controls\MenuPanel\HamburgerMenuPanelViewModel.cs" />
-    <Compile Include="Common\IHanbaiKanriView.cs" />
     <Compile Include="Common\Models\BackButtonClickPubSubEvent.cs" />
     <Compile Include="Common\Models\HeaderInfoModel.cs" />
     <Compile Include="Common\Models\PageInfoPubSubEvent.cs" />
@@ -128,14 +127,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="StartMenu\test.xaml.cs">
-      <DependentUpon>test.xaml</DependentUpon>
-    </Compile>
     <Page Include="Common\Controls\MenuItem\HamburgerMenuItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Common\Controls\MenuPanel\HamburgerMenuPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\Resource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,10 +152,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="StartMenu\StartMenuView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="StartMenu\test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

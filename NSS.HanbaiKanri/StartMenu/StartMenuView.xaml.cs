@@ -19,7 +19,7 @@ namespace NSS.HanbaiKanri.StartMenu
     /// <summary>
     /// StartMenuView.xaml の相互作用ロジック
     /// </summary>
-    public partial class StartMenuView : UserControl, IHanbaiKanriView
+    public partial class StartMenuView : UserControl
     {
         public StartMenuView()
         {

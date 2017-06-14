@@ -19,7 +19,7 @@ namespace NSS.HanbaiKanri.MasterMeinte.Employee
     /// <summary>
     /// EmployeeView.xaml の相互作用ロジック
     /// </summary>
-    public partial class EmployeeView : UserControl, IHanbaiKanriView
+    public partial class EmployeeView : UserControl
     {
         public EmployeeView()
         {

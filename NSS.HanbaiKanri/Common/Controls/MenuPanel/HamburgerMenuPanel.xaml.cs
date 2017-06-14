@@ -22,33 +22,46 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
     {
         #region 依存関係プロパティ定義
 
-        ///// <summary>
-        ///// エイリアスアイコン
-        ///// </summary>
-        //public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register(
-        //    "ItemsSource",
-        //    typeof(IEnumerable<object>),
-        //    typeof(HamburgerMenuPanel),
-        //    new FrameworkPropertyMetadata());
-        //#endregion
+        /// <summary>
+        /// メニュー展開時横幅
+        /// </summary>
+        public static readonly DependencyProperty OpenWidthProperty = DependencyProperty.Register(
+            "OpenWidth",
+            typeof(IEnumerable<object>),
+            typeof(HamburgerMenuPanel),
+            new FrameworkPropertyMetadata());
+        #endregion
 
-        //#region CLRラッパープロパティ
-        ///// <summary>
-        ///// エイリアスアイコン
-        ///// </summary>
-        //public IEnumerable<object> ItemsSource
-        //{
-        //    get { return (IEnumerable<object>)GetValue(ItemsSourceProperty); }
-        //    set { SetValue(ItemsSourceProperty, value); }
-        //}
+        #region CLRラッパープロパティ
+        /// <summary>
+        /// メニュー展開時横幅
+        /// </summary>
+        public int OpenWidth
+        {
+            get { return (int)GetValue(OpenWidthProperty); }
+            set { SetValue(OpenWidthProperty, value); }
+        }
 
         #endregion
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public HamburgerMenuPanel()
         {
             InitializeComponent();
 
+            // ViewとViewModelの紐付け
             this.DataContext = new HamburgerMenuPanelViewModel();
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            int a = 1;
+            if(this.DataContext == null)
+            {
+                a++;
+            }
         }
     }
 }
