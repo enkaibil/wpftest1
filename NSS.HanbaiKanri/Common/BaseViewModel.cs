@@ -10,6 +10,8 @@ using NSS.HanbaiKanri.Common.Models;
 using System.Windows.Controls;
 using Prism.Events;
 using System.Diagnostics;
+using System.Windows;
+using System.Windows.Media;
 
 namespace NSS.HanbaiKanri.Common
 {
@@ -41,6 +43,25 @@ namespace NSS.HanbaiKanri.Common
         protected virtual void OnBackButtonClick()
         {
             Debug.WriteLine("OnBackButtonClick");
+        }
+
+        private T FindVisualChild<T>(DependencyObject obj)
+        where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                if (child != null && child is T)
+                {
+                    return (T)child;
+                }
+                else
+                {
+                    T childOfChild = FindVisualChild<T>(child);
+                    if (childOfChild != null) return childOfChild;
+                }
+            }
+            return null;
         }
 
         #region INavigationAwareインターフェースメンバ

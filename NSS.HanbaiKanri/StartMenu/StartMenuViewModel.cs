@@ -31,6 +31,7 @@ namespace NSS.HanbaiKanri.StartMenu
         /// </summary>
         public void From_Loaded()
         {
+            int a = 1;
             //PageInfoPubSubEvent.Publish(this.EventAggregator, this);
         }
 

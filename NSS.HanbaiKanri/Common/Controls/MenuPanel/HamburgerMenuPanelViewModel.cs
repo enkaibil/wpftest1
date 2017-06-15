@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
 
 namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
 {
@@ -38,6 +40,26 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
         {
             //チェック状態の反転
             IsChecked = !IsChecked;
+        }
+
+        private T FindVisualChild<T>(DependencyObject obj)
+        where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                if (child != null && child is T)
+                {
+                    return (T)child;
+                }
+                else
+                {
+                    T childOfChild = FindVisualChild<T>(child);
+                    if (childOfChild != null) return childOfChild;
+                }
+            }
+
+            return null;
         }
     }
 }

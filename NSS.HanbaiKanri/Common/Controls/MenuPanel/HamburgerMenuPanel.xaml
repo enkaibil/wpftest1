@@ -26,34 +26,23 @@
                        IsOpen="{Binding IsChecked, ElementName=chkBox}">
                     <StackPanel>
                         <MenuItem:HamburgerMenuItem Alias="&#x2630;" Caption="メニュー" Command="{Binding CMD_btnMenu_Click}" />
-                        
+
+                        <ItemsPresenter />
                     </StackPanel>
                 </Popup>
             </DockPanel>
         </ControlTemplate>
     </ListBox.Template>
+    <ListBox.ItemContainerStyle>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+    </ListBox.ItemContainerStyle>
     <ItemsControl.ItemsPanel>
         <ItemsPanelTemplate>
             <StackPanel />
         </ItemsPanelTemplate>
     </ItemsControl.ItemsPanel>
-
-    <!--<ListView FontFamily="Segoe UI Symbol" FontSize="14">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn Header="&#x2630;" Width="40" />
-                <GridViewColumn Header="メニュー" Width="150" />
-            </GridView>
-        </ListView.View>
-        -->
-    <!--<ListView.Template>
-            <ControlTemplate>
-                    
-            </ControlTemplate>
-        </ListView.Template>
-        <ItemsPanelTemplate>
-
-        </ItemsPanelTemplate>-->
-    <!--
-    </ListView>-->
 </ListBox>

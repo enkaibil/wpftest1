@@ -26,15 +26,16 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>-->
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="{Binding Width, ElementName=root}" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <!-- エイリアス表示部 -->
                     <Label x:Name="AliasLabel" Grid.Column="0" 
+                           HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                            Foreground="{StaticResource MenuForeColor}"
                            Content="{Binding Alias, ElementName=root}" />
                     <!-- キャプション表示部-->
-                    <Label x:Name="CaptionLabel" Grid.Column="1" 
+                    <Label x:Name="CaptionLabel" Grid.Column="1" VerticalContentAlignment="Center"
                            Foreground="{StaticResource MenuForeColor}" 
                            Content="{Binding Caption, ElementName=root}" />
                 </Grid>
