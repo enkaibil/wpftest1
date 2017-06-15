@@ -72,7 +72,7 @@ namespace NSS.HanbaiKanri.Common
         /// <returns>true:再利用する, false:再利用しない</returns>
         public virtual bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            return true;
+            return false;
         }
 
         /// <summary>
