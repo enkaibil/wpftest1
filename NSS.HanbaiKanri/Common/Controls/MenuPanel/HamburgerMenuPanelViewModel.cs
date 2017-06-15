@@ -21,6 +21,7 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
         }
         private bool _isChecked;
 
+        public DelegateCommand CMD_Form_Loaded { get; }
         public DelegateCommand CMD_btnMenu_Click { get; }
 
         /// <summary>
@@ -28,9 +29,19 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
         /// </summary>
         public HamburgerMenuPanelViewModel()
         {
+            // イベント定義
+            CMD_Form_Loaded = new DelegateCommand(From_Loaded);
             CMD_btnMenu_Click = new DelegateCommand(btnMenu_Click);
 
             _isChecked = false;
+        }
+
+        /// <summary>
+        /// 画面初期表示イベント
+        /// </summary>
+        public void From_Loaded()
+        {
+            int i = 1;
         }
 
         /// <summary>

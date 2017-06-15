@@ -5,14 +5,21 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+            xmlns:Interactivity="clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.NET45"
             xmlns:local="clr-namespace:NSS.HanbaiKanri.Common.Controls.MenuPanel">
+    <i:Interaction.Triggers>
+        <i:EventTrigger>
+            <i:InvokeCommandAction x:Name="FormLoad" Command="{Binding CMD_Form_Loaded}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <ListBox.Template>
         <ControlTemplate TargetType="ItemsControl">
             <DockPanel x:Name="basePanel" Background="{StaticResource MenuBackColor}">
                 <Grid DockPanel.Dock="Top" Loaded="Grid_Loaded">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20" />
-                        <RowDefinition Height="30" />
+                        <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <CheckBox x:Name="chkBox" Grid.Row="0" Visibility="Hidden" IsChecked="{Binding IsChecked}" />
