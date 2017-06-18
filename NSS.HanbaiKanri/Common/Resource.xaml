@@ -5,7 +5,18 @@
 
     <!-- ハンバーガーメニュー用リソース -->
     <SolidColorBrush x:Key="MenuBackColor" Color="#FF3C3C3C" />
+    <SolidColorBrush x:Key="MenuBackColor_Highlight" Color="#FF5F5F5F" />
+    <SolidColorBrush x:Key="MenuBackColor_Click" Color="#FF999999" />
     <SolidColorBrush x:Key="MenuForeColor" Color="White" />
     <system:Double x:Key="MenuHeight">30</system:Double>
     <system:Double x:Key="MenuCloseWidth">40</system:Double>
+    <Style x:Key="MenuFocusStyle">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="1" StrokeThickness="1" Stroke="White"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

@@ -33,32 +33,30 @@
                 </Grid.ColumnDefinitions>
                 <!-- エイリアス表示部 -->
                 <TextBlock x:Name="AliasLabel" Grid.Column="0"
-                               Width="{StaticResource MenuCloseWidth}"
-                               Text="{Binding Alias, ElementName=root}"
-                               Foreground="{StaticResource MenuForeColor}"
-                               TextAlignment="Center" VerticalAlignment="Center" />
+                                Width="{StaticResource MenuCloseWidth}"
+                                Text="{Binding Alias, ElementName=root}"
+                                Foreground="{StaticResource MenuForeColor}"
+                                TextAlignment="Center" VerticalAlignment="Center" />
                 <!--<Label x:Name="AliasLabel" Grid.Column="0"
-                           Width="{StaticResource MenuCloseWidth}"
-                           Content="{Binding Alias, ElementName=root}"
-                           Foreground="{StaticResource MenuForeColor}"
-                           HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />-->
+                            Width="{StaticResource MenuCloseWidth}"
+                            Content="{Binding Alias, ElementName=root}"
+                            Foreground="{StaticResource MenuForeColor}"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />-->
                 <!-- キャプション表示部-->
                 <Label x:Name="CaptionLabel" Grid.Column="1" VerticalContentAlignment="Center"
-                           Visibility="{Binding ElementName=root, Path=IsOpen, Converter={StaticResource visibleConverter}}"
-                           Foreground="{StaticResource MenuForeColor}" 
-                           Content="{Binding Caption, ElementName=root}" />
+                            Visibility="{Binding ElementName=root, Path=IsOpen, Converter={StaticResource visibleConverter}}"
+                            Foreground="{StaticResource MenuForeColor}" 
+                            Content="{Binding Caption, ElementName=root}" />
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Red" TargetName="grid" />
-                    <!--<Setter Property="Visibility" Value="Visible" TargetName="CaptionLabel" />-->
+                    <Setter Property="Background" Value="{StaticResource MenuBackColor_Highlight}" TargetName="grid" />
                 </Trigger>
                 <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="Background" Value="Red" TargetName="grid" />
-                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Setter Property="FocusVisualStyle" Value="{StaticResource MenuFocusStyle}" />
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" Value="Blue" TargetName="grid" />
+                    <Setter Property="Background" Value="{StaticResource MenuBackColor_Click}" TargetName="grid" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
