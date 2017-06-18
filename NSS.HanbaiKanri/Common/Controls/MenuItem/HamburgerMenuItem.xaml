@@ -10,7 +10,12 @@
              mc:Ignorable="d" 
              x:Name="root"
              d:DesignHeight="25" d:DesignWidth="200">
-    <Button x:Name="button" Command="{Binding Command, ElementName=root}">
+    <UserControl.Resources>
+        <local:VisibleStyleConverter x:Key="visibleConverter" />
+    </UserControl.Resources>
+    <Button x:Name="button" 
+            Command="{Binding Command, ElementName=root}" 
+            Height="{StaticResource MenuHeight}">
         <Button.Template>
             <ControlTemplate TargetType="Button">
                 <Grid x:Name="grid">
@@ -26,16 +31,23 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>-->
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="{Binding Width, ElementName=root}" />
+                        <ColumnDefinition Width="{Binding ElementName=AliasLabel, Path=Width}" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <!-- エイリアス表示部 -->
-                    <Label x:Name="AliasLabel" Grid.Column="0" 
-                           HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                    <TextBlock x:Name="AliasLabel" Grid.Column="0"
+                               Width="{StaticResource MenuCloseWidth}"
+                               Text="{Binding Alias, ElementName=root}"
+                               Foreground="{StaticResource MenuForeColor}"
+                               TextAlignment="Center" VerticalAlignment="Center" />
+                    <!--<Label x:Name="AliasLabel" Grid.Column="0"
+                           Width="{StaticResource MenuCloseWidth}"
+                           Content="{Binding Alias, ElementName=root}"
                            Foreground="{StaticResource MenuForeColor}"
-                           Content="{Binding Alias, ElementName=root}" />
+                           HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />-->
                     <!-- キャプション表示部-->
                     <Label x:Name="CaptionLabel" Grid.Column="1" VerticalContentAlignment="Center"
+                           Visibility="{Binding ElementName=root, Path=IsOpen, Converter={StaticResource visibleConverter}}"
                            Foreground="{StaticResource MenuForeColor}" 
                            Content="{Binding Caption, ElementName=root}" />
                 </Grid>

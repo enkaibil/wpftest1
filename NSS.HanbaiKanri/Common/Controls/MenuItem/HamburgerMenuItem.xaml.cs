@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +51,15 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuItem
             new FrameworkPropertyMetadata(false));
 
         /// <summary>
+        /// ボタン押下フラグ
+        /// </summary>
+        public static readonly DependencyProperty IsPressedProperty = DependencyProperty.Register(
+            "IsPressed",
+            typeof(bool),
+            typeof(HamburgerMenuItem),
+            new FrameworkPropertyMetadata(false));
+
+        /// <summary>
         /// コマンド
         /// </summary>
         public static readonly DependencyProperty CommandProperty = DependencyProperty.Register(
@@ -89,6 +99,15 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuItem
         }
 
         /// <summary>
+        /// ボタン押下フラグ
+        /// </summary>
+        public bool IsPressed
+        {
+            get { return (bool)GetValue(IsPressedProperty); }
+            set { SetValue(IsPressedProperty, value); }
+        }
+
+        /// <summary>
         /// コマンド
         /// </summary>
         public ICommand Command
@@ -109,4 +128,35 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuItem
         }
         #endregion
     }
+
+    #region VisibleStyleConverter
+    /// <summary>
+    /// ブール値からコントロールのVisiblityを設定します。
+    /// True：表示、Flse：非表示（Collapsed）
+    /// </summary>
+    public class VisibleStyleConverter : IValueConverter
+    {
+        /// <summary>
+        /// ソース→ターゲット変換
+        /// </summary>
+        /// <param name="value">変換対象値</param>
+        /// <param name="targetType">変換対象の型</param>
+        /// <param name="parameter">Bindingで指定されたパラメーター</param>
+        /// <param name="culture">カルチャー情報</param>
+        /// <returns></returns>
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            Visibility result = Visibility.Collapsed;
+
+            result = (value is true) ? Visibility.Visible : Visibility.Collapsed;
+
+            return result;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    #endregion
 }

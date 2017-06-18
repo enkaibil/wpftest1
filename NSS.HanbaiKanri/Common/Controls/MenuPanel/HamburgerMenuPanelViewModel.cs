@@ -6,7 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Media;
+using System.Globalization;
 
 namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
 {
@@ -21,7 +23,7 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
         }
         private bool _isChecked;
 
-        public DelegateCommand CMD_Form_Loaded { get; }
+        public DelegateCommand<HamburgerMenuPanel> CMD_Form_Loaded { get; }
         public DelegateCommand CMD_btnMenu_Click { get; }
 
         /// <summary>
@@ -30,7 +32,7 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
         public HamburgerMenuPanelViewModel()
         {
             // イベント定義
-            CMD_Form_Loaded = new DelegateCommand(From_Loaded);
+            CMD_Form_Loaded = new DelegateCommand<HamburgerMenuPanel>(param => From_Loaded(param));
             CMD_btnMenu_Click = new DelegateCommand(btnMenu_Click);
 
             _isChecked = false;
@@ -39,7 +41,7 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
         /// <summary>
         /// 画面初期表示イベント
         /// </summary>
-        public void From_Loaded()
+        public void From_Loaded(HamburgerMenuPanel param)
         {
             int i = 1;
         }
@@ -51,26 +53,6 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
         {
             //チェック状態の反転
             IsChecked = !IsChecked;
-        }
-
-        private T FindVisualChild<T>(DependencyObject obj)
-        where T : DependencyObject
-        {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-                if (child != null && child is T)
-                {
-                    return (T)child;
-                }
-                else
-                {
-                    T childOfChild = FindVisualChild<T>(child);
-                    if (childOfChild != null) return childOfChild;
-                }
-            }
-
-            return null;
         }
     }
 }
