@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NSS.HanbaiKanri.Common
+namespace NSS.HanbaiKanri.Common.Controls
 {
     public class ShellViewModel : BaseViewModel
     {

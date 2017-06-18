@@ -12,6 +12,7 @@ using Prism.Events;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
+using NSS.HanbaiKanri.Common.Controls;
 
 namespace NSS.HanbaiKanri.Common
 {
@@ -21,9 +22,11 @@ namespace NSS.HanbaiKanri.Common
         public abstract string Title { get; }
 
         [Dependency]
+        /// <summary>イベントアグリゲーターオブジェクト</summary>
         public IEventAggregator EventAggregator { get; set; }
 
         [Dependency]
+        /// <summary>リージョンマネージャ</summary>
         public IRegionManager RegionManager { get; set; }
 
         #region コンストラクタ
@@ -35,16 +38,29 @@ namespace NSS.HanbaiKanri.Common
         }
         #endregion
 
+        /// <summary>
+        /// 指定したページに遷移します。
+        /// </summary>
+        /// <param name="targetView">遷移先VIEW</param>
         protected void RequestNavigate(UserControl targetView)
         {
             this.RegionManager.RequestNavigate("main", nameof(targetView));
         }
 
+        /// <summary>
+        /// 戻るボタン押下処理
+        /// </summary>
         protected virtual void OnBackButtonClick()
         {
             Debug.WriteLine("OnBackButtonClick");
         }
 
+        /// <summary>
+        /// ビジュアルツリー内のノードから指定の要素を取得します。
+        /// </summary>
+        /// <typeparam name="T">取得対象要素の型</typeparam>
+        /// <param name="obj">検索対象</param>
+        /// <returns>取得結果</returns>
         private T FindVisualChild<T>(DependencyObject obj)
         where T : DependencyObject
         {

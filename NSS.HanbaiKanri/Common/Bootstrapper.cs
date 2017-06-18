@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Reflection;
 using Prism.Events;
 using NSS.HanbaiKanri.Common.Models;
+using NSS.HanbaiKanri.Common.Controls;
 
 namespace NSS.HanbaiKanri.Common
 {

@@ -113,10 +113,10 @@
     <Compile Include="Common\Models\BackButtonClickPubSubEvent.cs" />
     <Compile Include="Common\Models\HeaderInfoModel.cs" />
     <Compile Include="Common\Models\PageInfoPubSubEvent.cs" />
-    <Compile Include="Common\ShellView.xaml.cs">
+    <Compile Include="Common\Controls\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\ShellViewModel.cs" />
+    <Compile Include="Common\Controls\ShellViewModel.cs" />
     <Compile Include="Common\BaseViewModel.cs" />
     <Compile Include="StartMenu\StartMenuView.xaml.cs">
       <DependentUpon>StartMenuView.xaml</DependentUpon>
@@ -138,7 +138,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Common\ShellView.xaml">
+    <Page Include="Common\Controls\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

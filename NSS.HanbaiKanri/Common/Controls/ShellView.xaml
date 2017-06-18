@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:prism="http://www.codeplex.com/prism"
         xmlns:prismLib="http://prismlibrary.com/"
-        xmlns:local="clr-namespace:NSS.HanbaiKanri.Common"
+        xmlns:local="clr-namespace:NSS.HanbaiKanri.Common.Controls"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:Interactivity="clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.NET45"
-        x:Class="NSS.HanbaiKanri.Common.ShellView"
+        x:Class="NSS.HanbaiKanri.Common.Controls.ShellView"
         mc:Ignorable="d"
         prismLib:ViewModelLocator.AutoWireViewModel="True"
         Title="shell" Height="711" Width="1012" MinWidth="1012" MinHeight="711">
