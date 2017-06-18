@@ -90,6 +90,13 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
                 if (item is HamburgerMenuItem)
                 {
                     HamburgerMenuItem copyItem = (HamburgerMenuItem)item;
+
+                    if (string.IsNullOrEmpty(copyItem.Alias))
+                    {
+                        copyItem.Visibility = Visibility.Hidden;
+                    }
+
+                    // ポップアップにもボタンを追加する。
                     HamburgerMenuItem newItem = new HamburgerMenuItem();
                     newItem.Alias = copyItem.Alias;
                     newItem.Caption = copyItem.Caption;

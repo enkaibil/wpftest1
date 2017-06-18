@@ -10,28 +10,24 @@
       prism:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d" 
       d:DesignHeight="640" d:DesignWidth="1000" Loaded="UserControl_Loaded">
-
     <i:Interaction.Triggers>
         <i:EventTrigger>
             <i:InvokeCommandAction Command="{Binding CMD_Form_Loaded}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <MenuPanel:HamburgerMenuPanel Grid.Column="0" x:Name="pnl" Width="40" >
-            <MenuItem:HamburgerMenuItem Alias="A" Caption="その２" Command="{Binding CMD_btnMMEmp_Click}" />
+        <MenuPanel:HamburgerMenuPanel x:Name="menuPanel" Grid.Column="0" >
+            <MenuItem:HamburgerMenuItem Caption="その２" Command="{Binding CMD_btnMMEmp_Click}" />
             <MenuItem:HamburgerMenuItem Alias="B" Caption="その３" Command="{Binding CMD_btnMMEmp_Click}" />
         </MenuPanel:HamburgerMenuPanel>
         <StackPanel Grid.Column="1" Background="#FFECE8E8">
             <Button Content="社員マスタ" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="279"
                     Command="{Binding CMD_btnMMEmp_Click}" Height="45" />
             <Button Content="閉じる" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="279" Height="45"/>
-
-            <MenuItem:HamburgerMenuItem Alias="A" Caption="その２" Command="{Binding CMD_btnMMEmp_Click}" />
         </StackPanel>
 
     </Grid>
