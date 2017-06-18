@@ -17,10 +17,10 @@
             <i:InvokeCommandAction x:Name="FormLoad" Command="{Binding CMD_Form_Loaded}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid x:Name="grid" Margin="2,0">
+    <Grid x:Name="grid" Margin="2,0" Background="{StaticResource PageBackColor}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel x:Name="header" Margin="0" Grid.Row="0" Orientation="Horizontal">
             <StackPanel.Background>
@@ -42,11 +42,13 @@
                 FontFamily="Segoe UI Symbol" FontSize="20" Background="#FF2B6E9C" Foreground="White" 
                 HorizontalAlignment="Left" Width="40" 
                 Command="{Binding CMD_btnBack_Click}" />
-            <Label Content="{Binding HeaderInfo.FormTitle}"
-                   FontSize="24" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"
+            <Label Content="{Binding HeaderInfo.FormTitle}" FontSize="24"
+                   VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"
                    Margin="5,0,0,0" Foreground="White" />
         </StackPanel>
         <!-- 1000 x 640 デフォルトサイズ-->
-        <ContentControl Name="main" prismLib:RegionManager.RegionName="main" Grid.Row="1" IsTabStop="False" />
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <ContentControl Name="main" IsTabStop="False" prismLib:RegionManager.RegionName="main" />
+        </ScrollViewer>
     </Grid>
 </Window>

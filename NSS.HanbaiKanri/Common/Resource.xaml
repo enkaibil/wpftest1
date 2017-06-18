@@ -4,6 +4,9 @@
                     xmlns:local="clr-namespace:NSS.HanbaiKanri.Common.Controls">
 
     <!-- ハンバーガーメニュー用リソース -->
+    <SolidColorBrush x:Key="PageBackColor" Color="#FFECE8E8" />
+    
+    <!-- ハンバーガーメニュー用リソース -->
     <SolidColorBrush x:Key="MenuBackColor" Color="#FF3C3C3C" />
     <SolidColorBrush x:Key="MenuBackColor_Highlight" Color="#FF5F5F5F" />
     <SolidColorBrush x:Key="MenuBackColor_Click" Color="#FF999999" />

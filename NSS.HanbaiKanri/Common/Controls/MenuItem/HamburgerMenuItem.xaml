@@ -36,17 +36,21 @@
                                 Width="{StaticResource MenuCloseWidth}"
                                 Text="{Binding Alias, ElementName=root}"
                                 Foreground="{StaticResource MenuForeColor}"
-                                TextAlignment="Center" VerticalAlignment="Center" />
+                                TextAlignment="Center" VerticalAlignment="Center" FontSize="14" />
                 <!--<Label x:Name="AliasLabel" Grid.Column="0"
                             Width="{StaticResource MenuCloseWidth}"
                             Content="{Binding Alias, ElementName=root}"
                             Foreground="{StaticResource MenuForeColor}"
                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />-->
                 <!-- キャプション表示部-->
-                <Label x:Name="CaptionLabel" Grid.Column="1" VerticalContentAlignment="Center"
-                            Visibility="{Binding ElementName=root, Path=IsOpen, Converter={StaticResource visibleConverter}}"
+                <TextBlock x:Name="CaptionLabel" Grid.Column="1"
+                           Text="{Binding Caption, ElementName=root}"
+                           Visibility="{Binding ElementName=root, Path=IsOpen, Converter={StaticResource visibleConverter}}"
+                           Foreground="{StaticResource MenuForeColor}"
+                           TextAlignment="Left" VerticalAlignment="Center" FontSize="14" />
+                <!--<Label x:Name="CaptionLabel" Grid.Column="1" VerticalContentAlignment="Center"
                             Foreground="{StaticResource MenuForeColor}" 
-                            Content="{Binding Caption, ElementName=root}" />
+                            Content="{Binding Caption, ElementName=root}" FontSize="14" />-->
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">

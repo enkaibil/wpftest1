@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:NSS.HanbaiKanri.MasterMeinte.Employee"
       xmlns:prism="http://prismlibrary.com/" prism:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300">
+      d:DesignHeight="640" d:DesignWidth="1000">
 
     <StackPanel>
         <Label>社員マスタ</Label>
