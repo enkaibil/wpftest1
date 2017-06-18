@@ -18,17 +18,17 @@
                     </Grid.RowDefinitions>
                     <Border x:Name="spacer" Visibility="Hidden" Grid.Row="0" />
                     <CheckBox x:Name="chkBox" Grid.Row="0" Visibility="Collapsed"
-                              IsChecked="{Binding IsChecked}" />
-                    <MenuItem:HamburgerMenuItem x:Name="btnMenu" Grid.Row="1" Alias="&#x2630;" />
+                              IsChecked="{Binding ElementName=root, Path=IsMenuOpen}" />
+                    <MenuItem:HamburgerMenuItem x:Name="btnMenu" Grid.Row="1" Alias="&#x2630;" Click="btnMenu_Click" />
                     <StackPanel x:Name="itemPanel" Grid.Row="2" IsItemsHost="True" />
                 </Grid>
                 <Popup x:Name="popup" Visibility="Collapsed" StaysOpen="False"
                        PlacementTarget="{Binding ElementName=chkBox}" Placement="Bottom"
                        Height="{Binding ElementName=basePanel, Path=ActualHeight}" Width="200"
-                       IsOpen="{Binding ElementName=chkBox, Path=IsChecked}" PopupAnimation="Slide">
+                       IsOpen="{Binding ElementName=root, Path=IsMenuOpen}" PopupAnimation="Slide">
                     <StackPanel Background="{StaticResource MenuBackColor}">
                         <Border x:Name="popSpacer" Visibility="Hidden" Height="{Binding ElementName=spacer, Path=ActualHeight}" />
-                        <MenuItem:HamburgerMenuItem Alias="&#x2630;" Caption="メニュー" Command="{Binding CMD_btnMenu_Click}" IsOpen="True" />
+                        <MenuItem:HamburgerMenuItem Alias="&#x2630;" Caption="メニュー" IsOpen="True" Click="btnMenu_Click" />
                     </StackPanel>
                 </Popup>
             </DockPanel>

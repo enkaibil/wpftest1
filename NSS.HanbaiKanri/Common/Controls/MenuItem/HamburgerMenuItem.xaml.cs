@@ -19,7 +19,7 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuItem
     /// <summary>
     /// ハンバーガーメニューコントロール
     /// </summary>
-    public partial class HamburgerMenuItem : UserControl
+    public partial class HamburgerMenuItem : Button
     {
         #region 依存関係プロパティ定義
 
@@ -49,24 +49,6 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuItem
             typeof(bool),
             typeof(HamburgerMenuItem),
             new FrameworkPropertyMetadata(false));
-
-        /// <summary>
-        /// ボタン押下フラグ
-        /// </summary>
-        public static readonly DependencyProperty IsPressedProperty = DependencyProperty.Register(
-            "IsPressed",
-            typeof(bool),
-            typeof(HamburgerMenuItem),
-            new FrameworkPropertyMetadata(false));
-
-        /// <summary>
-        /// コマンド
-        /// </summary>
-        public static readonly DependencyProperty CommandProperty = DependencyProperty.Register(
-            "Command",
-            typeof(ICommand),
-            typeof(HamburgerMenuItem),
-            new FrameworkPropertyMetadata());
         #endregion
 
         #region CLRラッパープロパティ
@@ -96,24 +78,6 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuItem
         {
             get { return (bool)GetValue(IsOpenProperty); }
             set { SetValue(IsOpenProperty, value); }
-        }
-
-        /// <summary>
-        /// ボタン押下フラグ
-        /// </summary>
-        public bool IsPressed
-        {
-            get { return (bool)GetValue(IsPressedProperty); }
-            set { SetValue(IsPressedProperty, value); }
-        }
-
-        /// <summary>
-        /// コマンド
-        /// </summary>
-        public ICommand Command
-        {
-            get { return (ICommand)GetValue(CommandProperty); }
-            set { SetValue(CommandProperty, value); }
         }
 
         #endregion

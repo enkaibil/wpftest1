@@ -133,5 +133,11 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
 
             return null;
         }
+
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            //チェック状態の反転
+            IsMenuOpen = !IsMenuOpen;
+        }
     }
 }
