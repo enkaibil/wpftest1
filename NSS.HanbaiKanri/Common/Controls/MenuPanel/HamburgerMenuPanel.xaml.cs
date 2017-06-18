@@ -91,6 +91,7 @@ namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
                 {
                     HamburgerMenuItem copyItem = (HamburgerMenuItem)item;
 
+                    // エイリアスが無い場合、ボタンを隠す。
                     if (string.IsNullOrEmpty(copyItem.Alias))
                     {
                         copyItem.Visibility = Visibility.Hidden;

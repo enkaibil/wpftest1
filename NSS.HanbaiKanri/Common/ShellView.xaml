@@ -47,6 +47,6 @@
                    Margin="5,0,0,0" Foreground="White" />
         </StackPanel>
         <!-- 1000 x 640 デフォルトサイズ-->
-        <ContentControl Name="main" prismLib:RegionManager.RegionName="main" Grid.Row="1" />
+        <ContentControl Name="main" prismLib:RegionManager.RegionName="main" Grid.Row="1" IsTabStop="False" />
     </Grid>
 </Window>
