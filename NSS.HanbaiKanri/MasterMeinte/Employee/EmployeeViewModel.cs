@@ -27,9 +27,5 @@ namespace NSS.HanbaiKanri.MasterMeinte.Employee
 
         }
 
-        protected override void OnBackButtonClick()
-        {
-            this.RegionManager.RequestNavigate("main", nameof(StartMenuView));
-        }
     }
 }
