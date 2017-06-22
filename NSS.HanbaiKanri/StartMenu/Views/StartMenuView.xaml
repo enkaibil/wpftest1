@@ -21,7 +21,6 @@
         <StackPanel Grid.Column="1">
             <Button Content="社員マスタ" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="279"
                     Command="{Binding CMD_btnMMEmp_Click}" Height="45" />
-            <Button Content="閉じる" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="279" Height="45"/>
         </StackPanel>
     </Grid>
 </UserControl>

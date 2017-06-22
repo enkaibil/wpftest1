@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace NSS.HanbaiKanri.StartMenu.ViewModels
 {
@@ -27,6 +28,16 @@ namespace NSS.HanbaiKanri.StartMenu.ViewModels
             CMD_btnMMEmp_Click = new DelegateCommand(btnMMEmp_Click);
         }
 
+        protected override void OnBackButtonClick()
+        {
+            Application.Current.Shutdown();
+        }
+
+        public override void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            base.OnNavigatedTo(navigationContext);
+        }
+
         /// <summary>
         /// 社員マスタボタン押下イベント
         /// </summary>
@@ -35,14 +46,5 @@ namespace NSS.HanbaiKanri.StartMenu.ViewModels
             this.RequestNavigate<EmployeeView>();
         }
 
-        public override void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-            base.OnNavigatedFrom(navigationContext);
-        }
-
-        public override void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            base.OnNavigatedTo(navigationContext);
-        }
     }
 }
