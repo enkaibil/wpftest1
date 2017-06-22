@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NSS.HanbaiKanri.Common.Controls.MenuItem
+namespace NSS.HanbaiKanri.Common.Controls.Views
 {
     /// <summary>
     /// ハンバーガーメニューコントロール

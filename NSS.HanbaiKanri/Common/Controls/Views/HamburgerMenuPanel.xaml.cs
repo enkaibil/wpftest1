@@ -1,5 +1,4 @@
-﻿using NSS.HanbaiKanri.Common.Controls.MenuItem;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +16,7 @@ using System.Windows.Shapes;
 using System.Xaml;
 using System.Globalization;
 
-namespace NSS.HanbaiKanri.Common.Controls.MenuPanel
+namespace NSS.HanbaiKanri.Common.Controls.Views
 {
     /// <summary>
     /// MenuPanel.xaml の相互作用ロジック

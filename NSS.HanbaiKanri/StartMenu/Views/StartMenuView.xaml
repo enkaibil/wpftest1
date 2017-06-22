@@ -1,33 +1,27 @@
-﻿<UserControl xmlns:MenuPanel="clr-namespace:NSS.HanbaiKanri.Common.Controls.MenuPanel" 
+﻿<UserControl
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:prism="http://prismlibrary.com/"
-      xmlns:MenuItem="clr-namespace:NSS.HanbaiKanri.Common.Controls.MenuItem" 
-      x:Class="NSS.HanbaiKanri.StartMenu.StartMenuView"
+      xmlns:Controls="clr-namespace:NSS.HanbaiKanri.Common.Controls.Views" 
+      x:Class="NSS.HanbaiKanri.StartMenu.Views.StartMenuView"
       prism:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d" 
-      d:DesignHeight="640" d:DesignWidth="1000" Loaded="UserControl_Loaded">
-    <i:Interaction.Triggers>
-        <i:EventTrigger>
-            <i:InvokeCommandAction Command="{Binding CMD_Form_Loaded}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
+      d:DesignHeight="640" d:DesignWidth="1000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <MenuPanel:HamburgerMenuPanel x:Name="menuPanel" Grid.Column="0" >
-            <MenuItem:HamburgerMenuItem Caption="社員マスタ" Command="{Binding CMD_btnMMEmp_Click}" />
-        </MenuPanel:HamburgerMenuPanel>
+        <Controls:HamburgerMenuPanel x:Name="menuPanel" Grid.Column="0" >
+            <Controls:HamburgerMenuItem Caption="社員マスタ" Command="{Binding CMD_btnMMEmp_Click}" />
+        </Controls:HamburgerMenuPanel>
         <StackPanel Grid.Column="1">
             <Button Content="社員マスタ" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="279"
                     Command="{Binding CMD_btnMMEmp_Click}" Height="45" />
             <Button Content="閉じる" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="279" Height="45"/>
         </StackPanel>
-
     </Grid>
 </UserControl>

@@ -1,11 +1,11 @@
-﻿<ListBox    xmlns:MenuItem="clr-namespace:NSS.HanbaiKanri.Common.Controls.MenuItem"
+﻿<ListBox    xmlns:Controls="clr-namespace:NSS.HanbaiKanri.Common.Controls.Views"
             x:Name="root"
-            x:Class="NSS.HanbaiKanri.Common.Controls.MenuPanel.HamburgerMenuPanel"
+            x:Class="NSS.HanbaiKanri.Common.Controls.Views.HamburgerMenuPanel"
             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-            xmlns:local="clr-namespace:NSS.HanbaiKanri.Common.Controls.MenuPanel"
+            xmlns:local="clr-namespace:NSS.HanbaiKanri.Common.Controls.Views"
             IsSynchronizedWithCurrentItem="True">
     <ListBox.Template>
         <ControlTemplate TargetType="ItemsControl">
@@ -20,7 +20,7 @@
                     <Border x:Name="spacer" Visibility="Hidden" Grid.Row="0" />
                     <CheckBox x:Name="chkBox" Grid.Row="0" Visibility="Collapsed"
                               IsChecked="{Binding ElementName=root, Path=IsMenuOpen}" />
-                    <MenuItem:HamburgerMenuItem x:Name="btnMenu" Grid.Row="1" Alias="&#x2630;" Click="btnMenu_Click" />
+                    <Controls:HamburgerMenuItem x:Name="btnMenu" Grid.Row="1" Alias="&#x2630;" Click="btnMenu_Click" />
                     <StackPanel x:Name="itemPanel" Grid.Row="2" IsItemsHost="True" />
                 </Grid>
                 <Popup x:Name="popup" Visibility="Collapsed" StaysOpen="False"
@@ -29,7 +29,7 @@
                        IsOpen="{Binding ElementName=root, Path=IsMenuOpen}" PopupAnimation="Slide">
                     <StackPanel Background="{StaticResource MenuBackColor}">
                         <Border x:Name="popSpacer" Visibility="Hidden" Height="{Binding ElementName=spacer, Path=ActualHeight}" />
-                        <MenuItem:HamburgerMenuItem Alias="&#x2630;" Caption="メニュー" IsOpen="True" Click="btnMenu_Click" />
+                        <Controls:HamburgerMenuItem Alias="&#x2630;" Caption="メニュー" IsOpen="True" Click="btnMenu_Click" />
                     </StackPanel>
                 </Popup>
             </DockPanel>

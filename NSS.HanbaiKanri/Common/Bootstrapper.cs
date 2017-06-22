@@ -12,6 +12,7 @@ using System.Reflection;
 using Prism.Events;
 using NSS.HanbaiKanri.Common.Models;
 using NSS.HanbaiKanri.Common.Controls;
+using NSS.HanbaiKanri.Common.Controls.Views;
 
 namespace NSS.HanbaiKanri.Common
 {
@@ -30,15 +31,15 @@ namespace NSS.HanbaiKanri.Common
             ((Window)this.Shell).Show();
         }
 
-        protected override void ConfigureViewModelLocator()
-        {
-            base.ConfigureViewModelLocator();
-            // ViewとViewModelの紐付ルール変更
-            ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(viewType =>
-            {
-                return Type.GetType(viewType.FullName + "Model");
-            });
-        }
+        //protected override void ConfigureViewModelLocator()
+        //{
+        //    base.ConfigureViewModelLocator();
+        //    // ViewとViewModelの紐付ルール変更
+        //    //ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(viewType =>
+        //    //{
+        //    //    return Type.GetType(viewType.FullName + "Model");
+        //    //});
+        //}
 
         protected override void ConfigureModuleCatalog()
         {

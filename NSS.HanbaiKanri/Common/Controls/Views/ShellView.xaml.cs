@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace NSS.HanbaiKanri.Common.Controls
+namespace NSS.HanbaiKanri.Common.Controls.Views
 {
     /// <summary>
     /// shell.xaml の相互作用ロジック

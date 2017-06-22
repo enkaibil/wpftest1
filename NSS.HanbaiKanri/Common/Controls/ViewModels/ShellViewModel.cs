@@ -1,6 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 using NSS.HanbaiKanri.Common.Models;
-using NSS.HanbaiKanri.StartMenu;
+using NSS.HanbaiKanri.StartMenu.Views;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Regions;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NSS.HanbaiKanri.Common.Controls
+namespace NSS.HanbaiKanri.Common.Controls.ViewModels
 {
     public class ShellViewModel : BaseViewModel
     {
@@ -37,7 +37,6 @@ namespace NSS.HanbaiKanri.Common.Controls
             // イベント定義
             CMD_Form_Loaded = new DelegateCommand(From_Loaded);
             CMD_btnBack_Click = new DelegateCommand(btnBack_Click);
-
         }
 
         /// <summary>
@@ -48,7 +47,8 @@ namespace NSS.HanbaiKanri.Common.Controls
             // Model初期化
             HeaderInfo = new HeaderInfoModel(EventAggregator);
 
-            this.RegionManager.RequestNavigate("main", nameof(StartMenuView));
+            this.RequestNavigate<StartMenuView>();
+            //this.RegionManager.RegisterViewWithRegion("main", typeof(StartMenuView));
         }
 
         /// <summary>

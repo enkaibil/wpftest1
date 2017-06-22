@@ -1,4 +1,4 @@
-﻿using NSS.HanbaiKanri.StartMenu;
+﻿using NSS.HanbaiKanri.StartMenu.ViewModels;
 using Prism.Events;
 using Prism.Mvvm;
 using System;

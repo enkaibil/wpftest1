@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using NSS.HanbaiKanri.Common.Controls;
+using NSS.HanbaiKanri.Common.Controls.ViewModels;
 
 namespace NSS.HanbaiKanri.Common
 {
@@ -46,19 +47,21 @@ namespace NSS.HanbaiKanri.Common
         /// <summary>
         /// 指定したページに遷移します。
         /// </summary>
-        /// <param name="targetView">遷移先VIEW</param>
-        protected void RequestNavigate(UserControl targetView)
+        /// <typeparam name="targetView">遷移先VIEW</typeparam>
+        protected void RequestNavigate<TargetView>()
+        where TargetView : UserControl
         {
-            this.RegionManager.RequestNavigate("main", nameof(targetView));
+            this.RequestNavigate<TargetView>(null);
         }
 
         /// <summary>
         /// 指定したページに遷移します。
         /// </summary>
-        /// <param name="targetView">遷移先VIEW</param>
-        protected void RequestNavigate(UserControl targetView, NavigationParameters param)
+        /// <typeparam name="targetView">遷移先VIEW</typeparam>
+        protected void RequestNavigate<TargetView>(NavigationParameters param)
+        where TargetView : UserControl
         {
-            this.RegionManager.RequestNavigate("main", nameof(targetView), param);
+            this.RegionManager.RequestNavigate("main", typeof(TargetView).Name, param);
         }
 
         /// <summary>

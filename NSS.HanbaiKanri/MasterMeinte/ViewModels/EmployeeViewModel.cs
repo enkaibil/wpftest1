@@ -8,7 +8,7 @@ using Prism.Regions;
 using NSS.HanbaiKanri.StartMenu;
 using NSS.HanbaiKanri.Common.Models;
 
-namespace NSS.HanbaiKanri.MasterMeinte.Employee
+namespace NSS.HanbaiKanri.MasterMeinte.ViewModels
 {
     public class EmployeeViewModel : BaseViewModel
     {
