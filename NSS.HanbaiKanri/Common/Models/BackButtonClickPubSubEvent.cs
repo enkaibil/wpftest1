@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NSS.HanbaiKanri.Common.Models
 {
-    class BackButtonClickPubSubEvent : PubSubEvent
+    public class BackButtonClickPubSubEvent : PubSubEvent
     {
         public static void Publish(IEventAggregator eventAggregator)
         {
