@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="Common\Controls\ViewModels\ShellViewModel.cs" />
     <Compile Include="Common\BaseViewModel.cs" />
+    <Compile Include="Common\Models\SystemMenuBehavior.cs" />
     <Compile Include="Common\SystemConst.cs" />
     <Compile Include="MasterMeinte\Views\EmployeeView.xaml.cs">
       <DependentUpon>EmployeeView.xaml</DependentUpon>

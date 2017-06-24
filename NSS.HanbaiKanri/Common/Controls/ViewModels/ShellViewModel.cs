@@ -27,6 +27,7 @@ namespace NSS.HanbaiKanri.Common.Controls.ViewModels
         public override string Title { get { return "BLANK"; } }
 
         public DelegateCommand CMD_Form_Loaded { get; }
+        public DelegateCommand CMD_Form_Closing { get; }
         public DelegateCommand CMD_btnBack_Click { get; }
 
         /// <summary>
@@ -36,6 +37,7 @@ namespace NSS.HanbaiKanri.Common.Controls.ViewModels
         {
             // イベント定義
             CMD_Form_Loaded = new DelegateCommand(From_Loaded);
+            CMD_Form_Closing = new DelegateCommand(Form_Closing);
             CMD_btnBack_Click = new DelegateCommand(btnBack_Click);
         }
 
@@ -58,6 +60,13 @@ namespace NSS.HanbaiKanri.Common.Controls.ViewModels
         {
             // バックボタンが押された場合
             BackButtonClickPubSubEvent.Publish(this.EventAggregator);
+        }
+
+        /// <summary>
+        /// 画面終了時イベント
+        /// </summary>
+        public void Form_Closing()
+        {
         }
     }
 }

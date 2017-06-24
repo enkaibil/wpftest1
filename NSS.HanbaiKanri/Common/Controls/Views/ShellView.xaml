@@ -7,14 +7,22 @@
         xmlns:prismLib="http://prismlibrary.com/"
         xmlns:local="clr-namespace:NSS.HanbaiKanri.Common.Controls"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:model="clr-namespace:NSS.HanbaiKanri.Common.Models"
         xmlns:Interactivity="clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.NET45"
         x:Class="NSS.HanbaiKanri.Common.Controls.Views.ShellView"
         mc:Ignorable="d"
         prismLib:ViewModelLocator.AutoWireViewModel="True"
         Title="shell" Height="711" Width="1012" MinWidth="1012" MinHeight="711">
+    <i:Interaction.Behaviors>
+        <!-- メニューコントロールボックス制御（閉じるボタン無効化） -->
+        <model:SystemMenuBehavior />
+    </i:Interaction.Behaviors>
     <i:Interaction.Triggers>
         <i:EventTrigger>
             <i:InvokeCommandAction x:Name="FormLoad" Command="{Binding CMD_Form_Loaded}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction x:Name="FormClosing" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid x:Name="grid" Margin="2,0" Background="{StaticResource PageBackColor}">
