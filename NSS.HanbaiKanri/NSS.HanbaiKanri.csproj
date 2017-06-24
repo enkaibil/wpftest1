@@ -188,6 +188,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\NSS.HanbaiKanri.DataAccess\NSS.HanbaiKanri.DataAccess.csproj">
+      <Project>{0617d8c7-ab73-45c8-8c90-f62404b1faf7}</Project>
+      <Name>NSS.HanbaiKanri.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,6 +18,10 @@ namespace NSS.HanbaiKanri.Common
 {
     class Bootstrapper : UnityBootstrapper
     {
+        /// <summary>
+        /// シェルウィンドウを生成する。
+        /// </summary>
+        /// <returns>シェルウィンドウ</returns>
         protected override DependencyObject CreateShell()
         {
             // this.ContainerでUnityのコンテナが取得できるので
@@ -25,12 +29,18 @@ namespace NSS.HanbaiKanri.Common
             return this.Container.Resolve<ShellView>();
         }
 
+        /// <summary>
+        /// シェルウィンドウを表示する。
+        /// </summary>
         protected override void InitializeShell()
         {
             // Shellを表示する
             ((Window)this.Shell).Show();
         }
 
+        ///// <summary>
+        ///// ViewとViewModelの自動紐づけルールを設定する。
+        ///// </summary>
         //protected override void ConfigureViewModelLocator()
         //{
         //    base.ConfigureViewModelLocator();
@@ -41,12 +51,9 @@ namespace NSS.HanbaiKanri.Common
         //    //});
         //}
 
-        protected override void ConfigureModuleCatalog()
-        {
-            base.ConfigureModuleCatalog();
-
-
-        }
+        /// <summary>
+        /// コンテナへの格納の設定。
+        /// </summary>
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
