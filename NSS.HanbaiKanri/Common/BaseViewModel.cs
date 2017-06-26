@@ -24,6 +24,8 @@ namespace NSS.HanbaiKanri.Common
 
         private IRegionNavigationJournal _journal;
 
+        private SubscriptionToken _backButtonClickToken;
+
         [Dependency]
         /// <summary>イベントアグリゲーターオブジェクト</summary>
         public IEventAggregator EventAggregator { get; set; }
@@ -100,7 +102,7 @@ namespace NSS.HanbaiKanri.Common
             }
 
             // バックボタン押下イベントを購読する。
-            BackButtonClickPubSubEvent.Subscribe(this.EventAggregator, OnBackButtonClick);
+            _backButtonClickToken = BackButtonClickPubSubEvent.Subscribe(this.EventAggregator, OnBackButtonClick);
         }
 
         /// <summary>
@@ -109,6 +111,8 @@ namespace NSS.HanbaiKanri.Common
         /// <param name="navigationContext"></param>
         public virtual void OnNavigatedFrom(NavigationContext navigationContext)
         {
+            // バックボタン押下イベントの購読停止。
+            BackButtonClickPubSubEvent.UnSubscribe(_backButtonClickToken);
         }
 
         /// <summary>
