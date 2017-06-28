@@ -12,7 +12,7 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.MasterTable
 {
     public class MasterTableContext : BaseDbContext
     {
-        public virtual DbSet<MT_Shubetsu> MT_Shubetsu { get; set; }
+        public virtual DbSet<M_Shubetsu> M_ShubetsuSet { get; set; }
 
         /// <summary>
         /// コンストラクタ
@@ -27,7 +27,7 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.MasterTable
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<MT_Shubetsu>().HasKey(key => key.Code);
+            modelBuilder.Entity<M_Shubetsu>().HasKey(key => key.Code);
         }
     }
 }

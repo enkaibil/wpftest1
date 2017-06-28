@@ -4,10 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-      xmlns:prism="http://prismlibrary.com/"
+      xmlns:prism="http://prismlibrary.com/" prism:ViewModelLocator.AutoWireViewModel="True"
       xmlns:Controls="clr-namespace:NSS.HanbaiKanri.Common.Controls.Views" 
       x:Class="NSS.HanbaiKanri.StartMenu.Views.StartMenuView"
-      prism:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d" 
       d:DesignHeight="640" d:DesignWidth="1000">
     <Grid>
@@ -21,6 +20,8 @@
         <StackPanel Grid.Column="1">
             <Button Content="社員マスタ" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="279"
                     Command="{Binding CMD_btnMMEmp_Click}" Height="45" />
+            <Button Content="閉じる" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="279"
+                Command="{Binding CMD_btnBack_Click}" Height="45" />
         </StackPanel>
     </Grid>
 </UserControl>

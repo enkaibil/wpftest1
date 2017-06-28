@@ -1,6 +1,5 @@
-﻿using NSS.HanbaiKanri.DataAccess.Models.MasterTables;
-//using Microsoft.Extensions.Logging;
-//using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using NSS.HanbaiKanri.DataAccess.BusinessLogic.MasterTable;
+using NSS.HanbaiKanri.DataAccess.Models.MasterTables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +10,14 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.StartMenu
 {
     public class StartMenuBL
     {
-        public List<MT_Shubetsu> Initialize()
+        public List<M_Shubetsu> Initialize()
         {
-            NSSDBContext context = new NSSDBContext();
+            List<M_Shubetsu> result;
 
+            MasterTableContext context = new MasterTableContext();
 
-            List<MT_Shubetsu> result = context.MT_Shubetsu.ToList();
+                // select
+                result = context.M_ShubetsuSet.ToList();
 
             return result;
         }

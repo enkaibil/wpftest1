@@ -18,7 +18,8 @@ namespace NSS.HanbaiKanri.StartMenu.ViewModels
     {
         /// <summary>ウィンドウタイトル</summary>
         public override string Title { get { return "スタートメニュー"; } }
-        
+
+        public DelegateCommand CMD_btnBack_Click { get; }
         public DelegateCommand CMD_btnMMEmp_Click { get; }
 
         /// <summary>
@@ -27,6 +28,7 @@ namespace NSS.HanbaiKanri.StartMenu.ViewModels
         public StartMenuViewModel() : base()
         {
             CMD_btnMMEmp_Click = new DelegateCommand(btnMMEmp_Click);
+            CMD_btnBack_Click = new DelegateCommand(OnBackButtonClick);
         }
 
         /// <summary>

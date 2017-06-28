@@ -7,8 +7,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NSS.HanbaiKanri.DataAccess.Models.MasterTables
-{    
-    public class MT_Shubetsu
+{
+    [Table("M_Shubetsu")]
+    public class M_Shubetsu
     {
         public string Code { get; set; }
         public string Name { get; set; }
