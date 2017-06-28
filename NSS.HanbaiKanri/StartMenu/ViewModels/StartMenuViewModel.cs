@@ -29,14 +29,14 @@ namespace NSS.HanbaiKanri.StartMenu.ViewModels
             CMD_btnMMEmp_Click = new DelegateCommand(btnMMEmp_Click);
         }
 
-        ///// <summary>
-        ///// 戻るボタンイベントのオーバーライド
-        ///// </summary>
-        //protected override void OnBackButtonClick()
-        //{
-        //    // アプリを終了する。
-        //    Application.Current.Shutdown();
-        //}
+        /// <summary>
+        /// 戻るボタンイベントのオーバーライド
+        /// </summary>
+        protected override void OnBackButtonClick()
+        {
+            // アプリを終了する。
+            Application.Current.Shutdown();
+        }
 
         /// <summary>
         /// 画面に遷移してきたときに呼び出されるメソッド

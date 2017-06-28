@@ -1,6 +1,6 @@
 ﻿using NSS.HanbaiKanri.DataAccess.Models.MasterTables;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+//using Microsoft.Extensions.Logging;
+//using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +15,6 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.StartMenu
         {
             NSSDBContext context = new NSSDBContext();
 
-            var serviceProvider = context.GetInfrastructure<IServiceProvider>();
-            var a = (ILoggerFactory)serviceProvider.GetService(typeof(ILoggerFactory));
-
-            a.AddDebug();
 
             List<MT_Shubetsu> result = context.MT_Shubetsu.ToList();
 

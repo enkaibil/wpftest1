@@ -8,23 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NSS.HanbaiKanri.DataAccess
+namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.MasterTable
 {
-    public class NSSDBContext : BaseDbContext
+    public class MasterTableContext : BaseDbContext
     {
         public virtual DbSet<MT_Shubetsu> MT_Shubetsu { get; set; }
 
-        public NSSDBContext() : base()
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public MasterTableContext() : base()
         {
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder options)
-        //{
-        //    string conn = ConfigurationManager.ConnectionStrings["conStr"].ConnectionString;
-        //    options.UseSqlServer(conn);
-        //}
-
-        
+        /// <summary>
+        /// Fluent API 方式によるO/Rマッピング情報設定用メソッド
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MT_Shubetsu>().HasKey(key => key.Code);
