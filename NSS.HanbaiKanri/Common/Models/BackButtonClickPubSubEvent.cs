@@ -16,11 +16,20 @@ namespace NSS.HanbaiKanri.Common.Models
                 .Publish();
         }
 
-        public static void Subscribe(IEventAggregator eventAggregator, Action kickMethod)
+        public static SubscriptionToken Subscribe(IEventAggregator eventAggregator, Action kickMethod)
         {
-            eventAggregator
+             return eventAggregator
                 .GetEvent<BackButtonClickPubSubEvent>()
                 .Subscribe(kickMethod, ThreadOption.UIThread);
+        }
+
+        public static void UnSubscribe(SubscriptionToken token)
+        {
+            if (token != null)
+            {
+                token.Dispose();
+                token = null;
+            }
         }
     }
 }
