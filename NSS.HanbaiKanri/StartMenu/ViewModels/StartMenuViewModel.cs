@@ -1,7 +1,6 @@
 ﻿using NSS.HanbaiKanri.Common;
 using NSS.HanbaiKanri.Common.Models;
 using NSS.HanbaiKanri.MasterMeinte.Views;
-using NSS.HanbaiKanri.DataAccess.BusinessLogic.StartMenu;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -11,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using NSS.HanbaiKanri.Sample.Views;
 
 namespace NSS.HanbaiKanri.StartMenu.ViewModels
 {
@@ -48,15 +48,6 @@ namespace NSS.HanbaiKanri.StartMenu.ViewModels
         {
             // 基底クラスの処理
             base.OnNavigatedTo(navigationContext);
-
-            StartMenuBL bl = new StartMenuBL();
-
-            var result = bl.Initialize();
-
-            foreach (var i in result)
-            {
-                string value = i.Name;
-            }
         }
 
         /// <summary>
@@ -64,7 +55,7 @@ namespace NSS.HanbaiKanri.StartMenu.ViewModels
         /// </summary>
         private void btnMMEmp_Click()
         {
-            this.RequestNavigate<EmployeeView>();
+            this.RequestNavigate<EmployeeListView>();
         }
 
     }

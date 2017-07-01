@@ -79,8 +79,9 @@ namespace NSS.HanbaiKanri.Common
         #region INavigationAwareインターフェースメンバ
         /// <summary>
         /// 一度生成された画面のインスタンスを再使用するかを判定します。
+        /// 基本は再利用せず都度インスタンスを生成します。
         /// </summary>
-        /// <param name="navigationContext"></param>
+        /// <param name="navigationContext">ナビゲーション情報</param>
         /// <returns>true:再利用する, false:再利用しない</returns>
         public virtual bool IsNavigationTarget(NavigationContext navigationContext)
         {
@@ -88,9 +89,10 @@ namespace NSS.HanbaiKanri.Common
         }
 
         /// <summary>
-        /// 画面に遷移してきたときに呼び出されるメソッド
+        /// 画面に遷移してきたときに呼び出されるメソッド。
+        /// overrideする場合、基底クラスの処理を必ず呼び出すこと。
         /// </summary>
-        /// <param name="navigationContext"></param>
+        /// <param name="navigationContext">ナビゲーション情報</param>
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
             _journal = navigationContext.NavigationService.Journal;
@@ -106,9 +108,10 @@ namespace NSS.HanbaiKanri.Common
         }
 
         /// <summary>
-        /// 画面から遷移する前に呼び出されるメソッド
+        /// 画面から遷移する前に呼び出されるメソッド。
+        /// overrideする場合、基底クラスの処理を必ず呼び出すこと。
         /// </summary>
-        /// <param name="navigationContext"></param>
+        /// <param name="navigationContext">ナビゲーション情報</param>
         public virtual void OnNavigatedFrom(NavigationContext navigationContext)
         {
             // バックボタン押下イベントの購読停止。
@@ -116,9 +119,9 @@ namespace NSS.HanbaiKanri.Common
         }
 
         /// <summary>
-        /// 画面遷移をキャンセルするか否かを判定するメソッド
+        /// 画面遷移をキャンセルするか否かを判定するメソッド。
         /// </summary>
-        /// <param name="navigationContext"></param>
+        /// <param name="navigationContext">ナビゲーション情報</param>
         /// <param name="continuationCallback"></param>
         public virtual void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
         {

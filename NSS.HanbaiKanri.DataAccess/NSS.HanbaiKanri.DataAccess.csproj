@@ -115,10 +115,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\Common\BaseDbContext.cs" />
-    <Compile Include="BusinessLogic\MasterTable\MasterTableContext.cs" />
-    <Compile Include="BusinessLogic\StartMenu\StartMenuBL.cs" />
-    <Compile Include="Models\MasterTables\M_Shubetsu.cs" />
+    <Compile Include="BusinessEntity\Common\BaseDbContext.cs" />
+    <Compile Include="BusinessEntity\Sample\SampleSearchBE.cs" />
+    <Compile Include="BusinessLogic\Sample\SampleBL.cs" />
+    <Compile Include="BusinessEntity\SampleContext.cs" />
+    <Compile Include="BusinessLogic\Sample\SampleSearchParam.cs" />
+    <Compile Include="BusinessEntity\Models\SampleTables\Sample_M_Employee.cs" />
+    <Compile Include="BusinessEntity\Models\SampleTables\Sample_M_Shubetsu.cs" />
+    <Compile Include="Models\Sample\EmployeeSearchResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,13 +141,19 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SampleDB.mdf">
+    <Content Include="BusinessEntity\SampleDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SampleDB_log.ldf">
+    <Content Include="BusinessEntity\SampleDB_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>SampleDB.mdf</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BusinessLogic\Common\" />
+    <Folder Include="BusinessLogic\MasterTable\" />
+    <Folder Include="BusinessLogic\StartMenu\" />
+    <Folder Include="Models\MasterTables\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

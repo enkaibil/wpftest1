@@ -16,15 +16,15 @@ namespace NSS.HanbaiKanri.Common.Controls.ViewModels
 {
     public class ShellViewModel : BaseViewModel
     {
+        /// <summary>ウィンドウタイトル</summary>
+        public override string Title { get { return "BLANK"; } }
+
         public HeaderInfoModel HeaderInfo
         {
             get { return _headerInfo; }
             set { SetProperty(ref _headerInfo, value); }
         }
         private HeaderInfoModel _headerInfo;
-
-        /// <summary>ウィンドウタイトル</summary>
-        public override string Title { get { return "BLANK"; } }
 
         public DelegateCommand CMD_Form_Loaded { get; }
         public DelegateCommand CMD_Form_Closing { get; }

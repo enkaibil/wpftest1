@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="NSS.HanbaiKanri.Sample.Views.EmployeeListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/" prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:local="clr-namespace:NSS.HanbaiKanri.Sample.Views"
+             xmlns:Common="clr-namespace:NSS.HanbaiKanri.Common.Controls.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="640" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Common:HamburgerMenuPanel x:Name="menuPanel" Grid.Column="0" />
+        <StackPanel Grid.Column="1" Margin="10">
+            <Grid x:Name="SearchPanel" HorizontalAlignment="Left">
+                <Grid.RowDefinitions>
+                    <RowDefinition  />
+                    <RowDefinition  />
+                    <RowDefinition  />
+                    <RowDefinition  />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="lblYakushoku" Content="役職" Grid.Row="0" Grid.Column="0" Margin="0,0,10,0" />
+                <ComboBox x:Name="cmbYakushoku" Grid.Column="1" Width="120" HorizontalAlignment="Left"
+                          ItemsSource="{Binding Model.YakushokuList}" DisplayMemberPath="Name" />
+                <Label x:Name="lblKeyWord" Content="キーワード" Grid.Row="1" Grid.Column="0" Margin="0,0,10,0" />
+                <TextBox x:Name="txtKeyWord" Grid.Row="1" Grid.Column="1" Width="300" HorizontalAlignment="Left" />
+                <Button x:Name="btnSearch" Content="検索" Grid.Row="1" Grid.Column="2" Margin="10,0,0,0" Width="100" />
+            </Grid>
+            <Line Height="1" >
+                <Line.Fill>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.WindowFrameColorKey}}"/>
+                </Line.Fill>
+            </Line>
+            <StackPanel>
+
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</UserControl>
