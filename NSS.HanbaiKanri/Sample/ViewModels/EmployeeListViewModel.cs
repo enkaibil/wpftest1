@@ -1,5 +1,6 @@
 ﻿using NSS.HanbaiKanri.Common;
 using NSS.HanbaiKanri.Sample.Models;
+using Prism.Commands;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,19 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         /// <summary>ウィンドウタイトル</summary>
         public override string Title { get { return "社員マスタ"; } }
 
-        private EmployeeListModel _model = new EmployeeListModel();
+        /// <summary>Modelクラス</summary>
         public EmployeeListModel Model
         {
             get { return _model; }
             set { SetProperty(ref _model, value); }
         }
+        private EmployeeListModel _model = new EmployeeListModel();
+
+        #region Command定義
+
+        /// <summary>検索ボタン押下</summary>
+        public DelegateCommand CMD_btnSearch_Click { get; }
+        #endregion
 
         #region コンストラクタ
         /// <summary>
@@ -27,6 +35,7 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         /// </summary>
         public EmployeeListViewModel() : base()
         {
+            CMD_btnSearch_Click = new DelegateCommand(btnSearch_Click);
         }
         #endregion
 
@@ -38,6 +47,7 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
             // 基底クラスの処理＜＜必須＞＞
             base.OnNavigatedTo(navigationContext);
 
+            // 初期表示処理
             Model.InitAction();
         }
 
@@ -52,6 +62,12 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
 
         }
 
-
+        /// <summary>
+        /// 検索ボタン押下イベント
+        /// </summary>
+        public void btnSearch_Click()
+        {
+            Model.SearchAction();
+        }
     }
 }

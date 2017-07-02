@@ -11,6 +11,8 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
     /// </summary>
     public class SampleSearchParam
     {
+        /// <summary>検索役職コード</summary>
+        public string YakushokuCode { get; set; } = string.Empty;
         /// <summary>検索キーワード</summary>
         public string KeyWord { get; set; } = string.Empty;
 
