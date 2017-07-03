@@ -151,8 +151,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BusinessLogic\Common\" />
-    <Folder Include="BusinessLogic\MasterTables\" />
     <Folder Include="BusinessLogic\StartMenu\" />
     <Folder Include="Models\MasterTables\" />
   </ItemGroup>
