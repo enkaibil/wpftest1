@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample;
-using NSS.HanbaiKanri.DataAccess.BusinessEntity.Models.SampleTables;
+using NSS.HanbaiKanri.DataAccess.DataEntity.Models;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
 
@@ -42,7 +42,7 @@ namespace NSS.HanbaiKanri.Sample.Models
         /// </summary>
         public void InitAction()
         {
-            SampleBL bl = new SampleBL();
+            EmployeeList_BL bl = new EmployeeList_BL();
             List<Sample_M_Shubetsu> result = bl.Init();
 
             YakushokuList.AddRange(result);
@@ -53,7 +53,7 @@ namespace NSS.HanbaiKanri.Sample.Models
         /// </summary>
         public void SearchAction()
         {
-            SampleBL bl = new SampleBL();
+            EmployeeList_BL bl = new EmployeeList_BL();
             SampleSearchParam param = new SampleSearchParam();
             param.YakushokuCode = YakushokuCode;
             param.KeyWord = KeyWord;
