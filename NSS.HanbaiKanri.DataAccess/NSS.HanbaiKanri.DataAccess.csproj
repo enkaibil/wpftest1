@@ -151,7 +151,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BusinessLogic\StartMenu\" />
+    <Folder Include="BusinessLogic\SystemMenu\" />
     <Folder Include="Models\MasterTables\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

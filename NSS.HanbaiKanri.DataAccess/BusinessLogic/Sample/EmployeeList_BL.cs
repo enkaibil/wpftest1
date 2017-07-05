@@ -62,7 +62,7 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
                         query1 = from row in query1 where row.YakushokuCode == param.YakushokuCode select row;
                     }
 
-                    var result = from row in query1
+                    var query2 = from row in query1
                                  join ysm in context.Sample_M_Shubetsu
                                  on row.YakushokuCode equals ysm.Code
                                  where ysm.KBN == 1
@@ -71,18 +71,20 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
                                      ShainCode = row.ShainCode,
                                      ShainName = row.ShainName_Sei + " " + row.ShainName_Mei,
                                      Yakushoku = ysm.Name,
-                                     Age = row.Age
+                                     Age = row.Age,
+                                     NyushaDate = row.NyushaDate,
+                                     TaishokuFlg = row.TaishokuFlg
                                  };
 
                     if (!string.IsNullOrEmpty(param.KeyWord))
                     {
-                        result = from row in result
+                        query2 = from row in query2
                                  where row.ShainName.Contains(param.KeyWord)
                                     || row.Yakushoku.Contains(param.KeyWord)
                                  select row;
                     }
 
-                    param.ResultData = result.ToList();
+                    param.ResultData = query2.ToList();
 
                     //context.Database.CommitTransaction();
                 }

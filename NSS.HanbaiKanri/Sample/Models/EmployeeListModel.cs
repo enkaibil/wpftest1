@@ -37,14 +37,24 @@ namespace NSS.HanbaiKanri.Sample.Models
         }
         private string _keyWord = string.Empty;
 
+        /// <summary>社員一覧</summary>
+        public ObservableCollection<SearchResult> EmployeeList
+        {
+            get { return _employeeList; }
+            set { SetProperty(ref _employeeList, value); }
+        }
+        private ObservableCollection<SearchResult> _employeeList = new ObservableCollection<SearchResult>();
+
         /// <summary>
         /// 初期表示処理
         /// </summary>
         public void InitAction()
         {
+            // 役職一覧の取得
             EmployeeList_BL bl = new EmployeeList_BL();
             List<Sample_M_Shubetsu> result = bl.Init();
 
+            // 画面項目にバインド
             YakushokuList.AddRange(result);
         }
 
@@ -53,12 +63,15 @@ namespace NSS.HanbaiKanri.Sample.Models
         /// </summary>
         public void SearchAction()
         {
+            // データ検索処理
             EmployeeList_BL bl = new EmployeeList_BL();
             SampleSearchParam param = new SampleSearchParam();
             param.YakushokuCode = YakushokuCode;
             param.KeyWord = KeyWord;
-
             param = bl.Search(param);
+
+            // 画面項目にバンド
+            EmployeeList = new ObservableCollection<SearchResult>(param.ResultData);
         }
     }
 }

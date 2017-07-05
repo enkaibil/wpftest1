@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NSS.HanbaiKanri.MasterMeinte.Views
+namespace NSS.HanbaiKanri.StartMenu.Views
 {
     /// <summary>
-    /// EmployeeView.xaml の相互作用ロジック
+    /// StartMenuView.xaml の相互作用ロジック
     /// </summary>
-    public partial class EmployeeView : UserControl
+    public partial class SystemMenuView : UserControl
     {
-        public EmployeeView()
+        public SystemMenuView()
         {
             InitializeComponent();
         }

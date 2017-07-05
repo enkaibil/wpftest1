@@ -49,8 +49,8 @@ namespace NSS.HanbaiKanri.Common.Controls.ViewModels
             // Model初期化
             HeaderInfo = new HeaderInfoModel(EventAggregator);
 
-            this.RequestNavigate<StartMenuView>();
-            //this.RegionManager.RegisterViewWithRegion("main", typeof(StartMenuView));
+            this.RequestNavigate<SystemMenuView>();
+            //this.RegionManager.RegisterViewWithRegion("main", typeof(SystemMenuView));
         }
 
         /// <summary>

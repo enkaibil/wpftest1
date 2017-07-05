@@ -120,21 +120,18 @@
     <Compile Include="Common\BaseViewModel.cs" />
     <Compile Include="Common\Models\SystemMenuBehavior.cs" />
     <Compile Include="Common\SystemConst.cs" />
-    <Compile Include="MasterMeinte\Views\EmployeeView.xaml.cs">
-      <DependentUpon>EmployeeView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Sample\Models\EmployeeListModel.cs" />
     <Compile Include="Sample\ViewModels\EmployeeListViewModel.cs" />
     <Compile Include="Sample\Views\EmployeeListView.xaml.cs">
       <DependentUpon>EmployeeListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StartMenu\ViewModels\StartMenuViewModel.cs" />
+    <Compile Include="SystemMenu\ViewModels\SystemMenuViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="StartMenu\Views\StartMenuView.xaml.cs">
-      <DependentUpon>StartMenuView.xaml</DependentUpon>
+    <Compile Include="SystemMenu\Views\SystemMenuView.xaml.cs">
+      <DependentUpon>SystemMenuView.xaml</DependentUpon>
     </Compile>
     <Page Include="Common\Controls\Views\HamburgerMenuItem.xaml">
       <SubType>Designer</SubType>
@@ -152,10 +149,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MasterMeinte\Views\EmployeeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Sample\Views\EmployeeListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,13 +157,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="StartMenu\Views\StartMenuView.xaml">
+    <Page Include="SystemMenu\Views\SystemMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MasterMeinte\ViewModels\EmployeeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

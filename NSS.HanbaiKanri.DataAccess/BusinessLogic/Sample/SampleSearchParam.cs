@@ -31,5 +31,9 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
         public string Yakushoku { get; set; }
         /// <summary>年齢</summary>
         public int Age { get; set; }
+        /// <summary>入社年月日</summary>
+        public DateTime NyushaDate { get; set; }
+        /// <summary>退職フラグ</summary>
+        public bool TaishokuFlg { get; set; }
     }
 }

@@ -28,13 +28,13 @@ namespace NSS.HanbaiKanri.Common.Models
             PageInfoPubSubEvent.Subscribe(eventAggregator, SetHeader);
         }
 
+        /// <summary>
+        /// ヘッダー情報を設定します。
+        /// </summary>
+        /// <param name="targetViewModel">対象ビューモデル</param>
         public void SetHeader(BaseViewModel targetViewModel)
         {
             FormTitle = targetViewModel.Title;
-
-            if (targetViewModel is StartMenuViewModel)
-            {
-            }
         }
     }
 }
