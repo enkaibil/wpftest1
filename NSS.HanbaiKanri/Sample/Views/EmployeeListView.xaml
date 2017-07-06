@@ -13,6 +13,7 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+        <!-- メニューパネル -->
         <Common:HamburgerMenuPanel x:Name="menuPanel" Grid.Column="0" />
         <StackPanel Grid.Column="1" Margin="10">
             <Grid x:Name="SearchPanel" HorizontalAlignment="Left">
@@ -51,7 +52,7 @@
                 </ListView.View>
             </ListView>
             <DataGrid x:Name="EmployeeGrid" Background="DarkGray" AutoGenerateColumns="False" Height="200"
-                      ItemsSource="{Binding Model.EmployeeList}" IsReadOnly="True">
+                      ItemsSource="{Binding Model.EmployeeList}" IsReadOnly="True" HeadersVisibility="Column">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="社員番号" Width="60"
                                         Binding="{Binding Path=ShainCode}" />
