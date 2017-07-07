@@ -16,6 +16,7 @@
         <!-- メニューパネル -->
         <Common:HamburgerMenuPanel x:Name="menuPanel" Grid.Column="0" />
         <StackPanel Grid.Column="1" Margin="10">
+            <!-- 検索部分 -->
             <Grid x:Name="SearchPanel" HorizontalAlignment="Left">
                 <Grid.RowDefinitions>
                     <RowDefinition  />
@@ -38,7 +39,9 @@
                 <Button x:Name="btnSearch" Content="検索" Grid.Row="1" Grid.Column="2" Margin="10,5,0,5" Width="100"
                         Command="{Binding CMD_btnSearch_Click}" />
             </Grid>
+            <!-- 区切り線 -->
             <TextBlock Background="DarkGray" Height="1" Margin="0,10" />
+            <!-- 一覧部 -->
             <ListView x:Name="EmployeeList" ItemsSource="{Binding Model.EmployeeList}" Height="300" Background="DarkGray">
                 <ListView.View>
                     <GridView>
