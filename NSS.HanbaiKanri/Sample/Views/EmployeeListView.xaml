@@ -14,10 +14,17 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <!-- メニューパネル -->
-        <Common:HamburgerMenuPanel x:Name="menuPanel" Grid.Column="0" />
-        <StackPanel Grid.Column="1" Margin="10">
+        <Common:HamburgerMenuPanel x:Name="menuPanel" Grid.Column="0">
+            <Common:HamburgerMenuItem Alias="&#xE104;" Caption="選択" />
+        </Common:HamburgerMenuPanel>
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <!-- 検索部分 -->
-            <Grid x:Name="SearchPanel" HorizontalAlignment="Left">
+            <Grid Grid.Row="0" x:Name="SearchPanel" HorizontalAlignment="Left">
                 <Grid.RowDefinitions>
                     <RowDefinition  />
                     <RowDefinition  />
@@ -40,9 +47,9 @@
                         Command="{Binding CMD_btnSearch_Click}" />
             </Grid>
             <!-- 区切り線 -->
-            <TextBlock Background="DarkGray" Height="1" Margin="0,10" />
+            <TextBlock Grid.Row="1" Background="DarkGray" Height="1" />
             <!-- 一覧部 -->
-            <ListView x:Name="EmployeeList" ItemsSource="{Binding Model.EmployeeList}" Height="300" Background="DarkGray">
+            <ListView x:Name="EmployeeList" Grid.Row="2" ItemsSource="{Binding Model.EmployeeList}" Background="DarkGray">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="社員番号"  Width="60" DisplayMemberBinding="{Binding Path=ShainCode}" />
@@ -54,7 +61,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <DataGrid x:Name="EmployeeGrid" Background="DarkGray" AutoGenerateColumns="False" Height="200"
+            <!--<DataGrid x:Name="EmployeeGrid" Background="DarkGray" AutoGenerateColumns="False" Height="200"
                       ItemsSource="{Binding Model.EmployeeList}" IsReadOnly="True" HeadersVisibility="Column">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="社員番号" Width="60"
@@ -66,8 +73,8 @@
                     <DataGridTextColumn Header="年齢" Width="40"
                                         Binding="{Binding Path=Age}" />
                 </DataGrid.Columns>
-            </DataGrid>
+            </DataGrid>-->
 
-        </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>
