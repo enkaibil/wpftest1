@@ -1,4 +1,5 @@
 ﻿using NSS.HanbaiKanri.Common;
+using NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample;
 using NSS.HanbaiKanri.Sample.Models;
 using Prism.Commands;
 using Prism.Regions;
@@ -27,6 +28,9 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
 
         /// <summary>検索ボタン押下</summary>
         public DelegateCommand CMD_btnSearch_Click { get; }
+
+        /// <summary>選択処理</summary>
+        public DelegateCommand CMD_List_Select { get; }
         #endregion
 
         #region コンストラクタ
@@ -36,6 +40,7 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         public EmployeeListViewModel() : base()
         {
             CMD_btnSearch_Click = new DelegateCommand(btnSearch_Click);
+            CMD_List_Select = new DelegateCommand(List_Select);
         }
         #endregion
 
@@ -68,6 +73,14 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         public void btnSearch_Click()
         {
             Model.SearchAction();
+        }
+
+        /// <summary>
+        /// 選択ボタン押下イベント
+        /// </summary>
+        public void List_Select()
+        {
+            Model.SelectAction();
         }
     }
 }

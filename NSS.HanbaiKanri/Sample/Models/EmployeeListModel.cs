@@ -45,6 +45,14 @@ namespace NSS.HanbaiKanri.Sample.Models
         }
         private ObservableCollection<SearchResult> _employeeList = new ObservableCollection<SearchResult>();
 
+        /// <summary>選択社員</summary>
+        public SearchResult EmployeeList_SelectedItem
+        {
+            get { return _employeeList_SelectedItem; }
+            set { SetProperty(ref _employeeList_SelectedItem, value); }
+        }
+        public SearchResult _employeeList_SelectedItem = new SearchResult();
+
         /// <summary>
         /// 初期表示処理
         /// </summary>
@@ -73,5 +81,11 @@ namespace NSS.HanbaiKanri.Sample.Models
             // 画面項目にバンド
             EmployeeList = new ObservableCollection<SearchResult>(param.ResultData);
         }
+
+        public void SelectAction()
+        {
+            var value = this.EmployeeList_SelectedItem;
+        }
+
     }
 }
