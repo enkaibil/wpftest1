@@ -82,6 +82,9 @@ namespace NSS.HanbaiKanri.Sample.Models
             EmployeeList = new ObservableCollection<SearchResult>(param.ResultData);
         }
 
+        /// <summary>
+        /// 選択処理
+        /// </summary>
         public void SelectAction()
         {
             var value = this.EmployeeList_SelectedItem;
