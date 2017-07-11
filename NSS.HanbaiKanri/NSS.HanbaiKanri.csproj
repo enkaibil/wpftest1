@@ -120,8 +120,14 @@
     <Compile Include="Common\BaseViewModel.cs" />
     <Compile Include="Common\Models\SystemMenuBehavior.cs" />
     <Compile Include="Common\SystemConst.cs" />
+    <Compile Include="Sample\Models\EmployeeConst.cs" />
+    <Compile Include="Sample\Models\EmployeeEditModel.cs" />
     <Compile Include="Sample\Models\EmployeeListModel.cs" />
+    <Compile Include="Sample\ViewModels\EmployeeEditViewModel.cs" />
     <Compile Include="Sample\ViewModels\EmployeeListViewModel.cs" />
+    <Compile Include="Sample\Views\EmployeeEditView.xaml.cs">
+      <DependentUpon>EmployeeEditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sample\Views\EmployeeListView.xaml.cs">
       <DependentUpon>EmployeeListView.xaml</DependentUpon>
     </Compile>
@@ -146,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Common\Controls\Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sample\Views\EmployeeEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -85,9 +85,11 @@ namespace NSS.HanbaiKanri.Sample.Models
         /// <summary>
         /// 選択処理
         /// </summary>
-        public void SelectAction()
+        /// <returns>選択社員番号</returns>
+        public string SelectAction()
         {
-            var value = this.EmployeeList_SelectedItem;
+            SearchResult value = this.EmployeeList_SelectedItem;
+            return value.ShainCode;
         }
 
     }

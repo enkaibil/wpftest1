@@ -1,6 +1,7 @@
 ﻿using NSS.HanbaiKanri.Common;
 using NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample;
 using NSS.HanbaiKanri.Sample.Models;
+using NSS.HanbaiKanri.Sample.Views;
 using Prism.Commands;
 using Prism.Regions;
 using System;
@@ -11,10 +12,13 @@ using System.Threading.Tasks;
 
 namespace NSS.HanbaiKanri.Sample.ViewModels
 {
+    /// <summary>
+    /// 社員マスタ一覧画面用ViewModelクラス
+    /// </summary>
     public class EmployeeListViewModel : BaseViewModel
     {
         /// <summary>ウィンドウタイトル</summary>
-        public override string Title { get { return "社員マスタ"; } }
+        public override string Title { get { return "社員マスタ一覧"; } }
 
         /// <summary>Modelクラス</summary>
         public EmployeeListModel Model
@@ -80,7 +84,15 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         /// </summary>
         public void List_Select()
         {
-            Model.SelectAction();
+            // 選択処理
+            string selectValue = Model.SelectAction();
+
+            // パラメータの設定
+            NavigationParameters param = new NavigationParameters();
+            param.Add(EmployeeConst.ListSelectKey, selectValue);
+
+            // 画面遷移
+            this.RequestNavigate<EmployeeEditView>(param);
         }
     }
 }
