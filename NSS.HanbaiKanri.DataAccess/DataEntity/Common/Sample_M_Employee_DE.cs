@@ -13,7 +13,7 @@ namespace NSS.HanbaiKanri.DataAccess.DataEntity.Common
     public class Sample_M_Employee_DE
     {
         /// <summary>
-        /// 選択処理
+        /// 検索処理
         /// </summary>
         /// <param name="db">DBコンテキスト</param>
         /// <returns></returns>
@@ -31,7 +31,7 @@ namespace NSS.HanbaiKanri.DataAccess.DataEntity.Common
         }
 
         /// <summary>
-        /// 選択処理
+        /// 検索処理
         /// </summary>
         /// <param name="db">DBコンテキスト</param>
         /// <returns></returns>
@@ -40,7 +40,7 @@ namespace NSS.HanbaiKanri.DataAccess.DataEntity.Common
             List<Sample_M_Employee> result;
 
             var query = from row in db.Sample_M_Employee
-                        orderby row.ShainCode
+                        where row.ShainCode == shainCode
                         select row;
 
             result = query.ToList();

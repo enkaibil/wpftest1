@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NSS.HanbaiKanri.DataAccess.DataEntity.Models.Sample;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,23 +18,7 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
         public string KeyWord { get; set; } = string.Empty;
 
         /// <summary>検索結果</summary>
-        public List<SearchResult> ResultData { get; set; } = new List<SearchResult>();
+        public List<EmployeeList_SearchResult> ResultData { get; set; } = new List<EmployeeList_SearchResult>();
 
-    }
-
-    public class SearchResult
-    {
-        /// <summary>社員番号</summary>
-        public string ShainCode { get; set; }
-        /// <summary>社員氏名</summary>
-        public string ShainName { get; set; }
-        /// <summary>役職</summary>
-        public string Yakushoku { get; set; }
-        /// <summary>年齢</summary>
-        public int Age { get; set; }
-        /// <summary>入社年月日</summary>
-        public DateTime NyushaDate { get; set; }
-        /// <summary>退職フラグ</summary>
-        public bool TaishokuFlg { get; set; }
     }
 }

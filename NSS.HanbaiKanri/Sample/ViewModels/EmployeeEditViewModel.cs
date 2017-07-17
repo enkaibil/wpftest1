@@ -33,6 +33,12 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
             // 基底クラスの処理＜＜必須＞＞
             base.OnNavigatedTo(navigationContext);
 
+            // 画面間パラメータの取得
+            string shainCode = navigationContext.Parameters[EmployeeConst.ListSelectKey].ToString();
+
+            // 初期化処理
+            Model.InitAction(shainCode);
+
         }
 
         /// <summary>

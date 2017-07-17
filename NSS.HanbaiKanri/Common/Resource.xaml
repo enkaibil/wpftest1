@@ -13,9 +13,21 @@
         <Setter Property="Background" Value="#FFC5D9F1" />
     </Style>
 
+    <Style TargetType="TextBox">
+        <Style.Triggers>
+            <Trigger Property="IsReadOnly" Value="True">
+                <Setter Property="Background" >
+                    <Setter.Value>
+                        <SolidColorBrush Color="LightGray"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <!-- ハンバーガーメニュー用リソース -->
     <SolidColorBrush x:Key="PageBackColor" Color="#FFECE8E8" />
-    
+
     <!-- ハンバーガーメニュー用リソース -->
     <SolidColorBrush x:Key="MenuBackColor" Color="#FF3C3C3C" />
     <SolidColorBrush x:Key="MenuBackColor_Highlight" Color="#FF5F5F5F" />

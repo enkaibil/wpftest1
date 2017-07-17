@@ -115,15 +115,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\Sample\EmployeeEditInitParam.cs" />
+    <Compile Include="BusinessLogic\Sample\EmployeeEdit_BL.cs" />
     <Compile Include="DataEntity\Common\Sample_M_Employee_DE.cs" />
     <Compile Include="DataEntity\Common\Sample_M_Shubetsu_DE.cs" />
-    <Compile Include="DataEntity\Sample\SampleSearchBE.cs" />
+    <Compile Include="DataEntity\Models\Sample\EmployeeList_SearchResult.cs" />
+    <Compile Include="DataEntity\Sample\EmployeeList_DE.cs" />
     <Compile Include="BusinessLogic\Sample\EmployeeList_BL.cs" />
     <Compile Include="DataEntity\NssDbContext.cs" />
     <Compile Include="BusinessLogic\Sample\SampleSearchParam.cs" />
     <Compile Include="DataEntity\Models\Sample_M_Employee.cs" />
     <Compile Include="DataEntity\Models\Sample_M_Shubetsu.cs" />
-    <Compile Include="Models\Sample\EmployeeSearchResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,7 +154,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BusinessLogic\SystemMenu\" />
-    <Folder Include="Models\MasterTables\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -72,6 +72,20 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         }
 
         /// <summary>
+        /// 画面インスタンスの破棄確認
+        /// </summary>
+        /// <param name="navigationContext">ナビゲーション情報</param>
+        public override bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            if(navigationContext.Parameters.Count() > 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// 検索ボタン押下イベント
         /// </summary>
         public void btnSearch_Click()
@@ -87,12 +101,15 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
             // 選択処理
             string selectValue = Model.SelectAction();
 
-            // パラメータの設定
-            NavigationParameters param = new NavigationParameters();
-            param.Add(EmployeeConst.ListSelectKey, selectValue);
+            if (!string.IsNullOrEmpty(selectValue))
+            {
+                // パラメータの設定
+                NavigationParameters param = new NavigationParameters();
+                param.Add(EmployeeConst.ListSelectKey, selectValue);
 
-            // 画面遷移
-            this.RequestNavigate<EmployeeEditView>(param);
+                // 画面遷移
+                this.RequestNavigate<EmployeeEditView>(param);
+            }
         }
     }
 }

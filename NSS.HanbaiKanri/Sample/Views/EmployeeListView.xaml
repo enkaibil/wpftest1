@@ -17,7 +17,8 @@
         </Grid.ColumnDefinitions>
         <!-- メニューパネル -->
         <Common:HamburgerMenuPanel x:Name="menuPanel" Grid.Column="0">
-            <Common:HamburgerMenuItem Alias="&#xE104;" Caption="選択" Command="{Binding CMD_List_Select}" />
+            <Common:HamburgerMenuItem Alias="&#xE0B6;" Caption="追加" />
+            <Common:HamburgerMenuItem Alias="&#xE104;" Caption="編集" Command="{Binding CMD_List_Select}" />
         </Common:HamburgerMenuPanel>
         <Grid Grid.Column="1" Margin="10">
             <Grid.RowDefinitions>

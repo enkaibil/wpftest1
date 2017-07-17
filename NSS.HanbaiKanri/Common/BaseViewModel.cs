@@ -77,6 +77,7 @@ namespace NSS.HanbaiKanri.Common
 
 
         #region INavigationAwareインターフェースメンバ
+#warning 呼ばれてない？？
         /// <summary>
         /// 一度生成された画面のインスタンスを再使用するかを判定します。
         /// 基本は再利用せず都度インスタンスを生成します。
