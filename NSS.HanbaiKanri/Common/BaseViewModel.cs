@@ -27,6 +27,10 @@ namespace NSS.HanbaiKanri.Common
         private SubscriptionToken _backButtonClickToken;
 
         [Dependency]
+        /// <summary>DIコンテナ</summary>
+        public IUnityContainer Container { private get; set; }
+
+        [Dependency]
         /// <summary>イベントアグリゲーターオブジェクト</summary>
         public IEventAggregator EventAggregator { get; set; }
 
@@ -34,8 +38,12 @@ namespace NSS.HanbaiKanri.Common
         /// <summary>リージョンマネージャ</summary>
         public IRegionManager RegionManager { get; set; }
 
+        #region IRegionMemberLifetimeインターフェースメンバ
+
+        /// <summary>画面遷移時にViewのインスタンスを維持するかどうか</summary>
         public bool KeepAlive { get { return false; } }
 
+        #endregion
 
         #region コンストラクタ
         /// <summary>
@@ -75,15 +83,17 @@ namespace NSS.HanbaiKanri.Common
             if (_journal != null) _journal.GoBack();
         }
 
-
-        #region INavigationAwareインターフェースメンバ
-#warning 呼ばれてない？？
-        /// <summary>
-        /// 一度生成された画面のインスタンスを再使用するかを判定します。
-        /// 基本は再利用せず都度インスタンスを生成します。
-        /// </summary>
-        /// <param name="navigationContext">ナビゲーション情報</param>
-        /// <returns>true:再利用する, false:再利用しない</returns>
+        #region IConfirmNavigationRequest(INavigationAware)インターフェースメンバ
+            /// <summary>
+            /// 一度生成された画面のインスタンスを再使用するかを判定します。
+            /// 基本は再利用せず都度インスタンスを生成します。
+            /// </summary>
+            /// <remarks>
+            /// IRegionMemberLifetimeインターフェースメンバ、KeepAliveプロパティにより、
+            /// 常に破棄するよう設定しているため、このプロパティは無効。
+            /// </remarks>
+            /// <param name="navigationContext">ナビゲーション情報</param>
+            /// <returns>true:再利用する, false:再利用しない</returns>
         public virtual bool IsNavigationTarget(NavigationContext navigationContext)
         {
             return false;

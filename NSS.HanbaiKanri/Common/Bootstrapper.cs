@@ -16,7 +16,7 @@ using NSS.HanbaiKanri.Common.Controls.Views;
 
 namespace NSS.HanbaiKanri.Common
 {
-    class Bootstrapper : UnityBootstrapper
+    public class Bootstrapper : UnityBootstrapper
     {
         /// <summary>
         /// シェルウィンドウを生成する。
