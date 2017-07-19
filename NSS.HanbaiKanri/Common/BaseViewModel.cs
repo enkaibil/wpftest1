@@ -19,29 +19,50 @@ namespace NSS.HanbaiKanri.Common
 {
     public abstract class BaseViewModel : BindableBase, IConfirmNavigationRequest, IRegionMemberLifetime
     {
+        #region 定数定義
+
+        /// <summary>遷移元画面情報保存用キー名称</summary>
+        private const string TransitionSource_KEY = "__TransitionSource_KEY";
+
+        #endregion
+
+        #region 変数定義
+
+        /// <summary>リージョンナビゲーションジャーナル</summary>
+        private IRegionNavigationJournal _journal;
+
+        /// <summary>戻るボタン押下イベントトークン</summary>
+        private SubscriptionToken _backButtonClickToken;
+
+        /// <summary>リージョンマネージャ</summary>
+        private IRegionManager _regionManager;
+
+        #endregion
+
+        #region プロパティ定義
+        
         /// <summary>ウィンドウタイトル</summary>
         public abstract string Title { get; }
 
-        private IRegionNavigationJournal _journal;
-
-        private SubscriptionToken _backButtonClickToken;
-
-        [Dependency]
-        /// <summary>DIコンテナ</summary>
-        public IUnityContainer Container { private get; set; }
-
-        [Dependency]
         /// <summary>イベントアグリゲーターオブジェクト</summary>
+        [Dependency]
         public IEventAggregator EventAggregator { get; set; }
 
-        [Dependency]
         /// <summary>リージョンマネージャ</summary>
-        public IRegionManager RegionManager { get; set; }
+        [Dependency]
+        [Obsolete("リージョンマネージャは直接使用せず、画面遷移にはBaseViewModelのRequestNavigateメソッドを使用してください。")]
+        public IRegionManager RegionManager
+        {
+            get { return _regionManager; }
+            set { _regionManager = value; }
+        }
 
         #region IRegionMemberLifetimeインターフェースメンバ
 
         /// <summary>画面遷移時にViewのインスタンスを維持するかどうか</summary>
-        public bool KeepAlive { get { return false; } }
+        public bool KeepAlive { get; set; }
+
+        #endregion
 
         #endregion
 
@@ -51,9 +72,11 @@ namespace NSS.HanbaiKanri.Common
         /// </summary>
         public BaseViewModel() : base()
         {
+            KeepAlive = true;
         }
         #endregion
 
+        #region RequestNavigate
         /// <summary>
         /// 指定したページに遷移します。
         /// </summary>
@@ -61,49 +84,91 @@ namespace NSS.HanbaiKanri.Common
         protected void RequestNavigate<TargetView>()
         where TargetView : UserControl
         {
-            this.RequestNavigate<TargetView>(null);
+            this.RequestNavigate<TargetView>(new NavigationParameters());
         }
 
         /// <summary>
         /// 指定したページに遷移します。
         /// </summary>
         /// <typeparam name="targetView">遷移先VIEW</typeparam>
+        /// <param name="param">画面間パラメータ</param>
         protected void RequestNavigate<TargetView>(NavigationParameters param)
         where TargetView : UserControl
         {
-            this.RegionManager.RequestNavigate("main", typeof(TargetView).Name, param);
+            // 遷移元のView情報を格納しておく
+            param.Add(TransitionSource_KEY, this.GetType());
+
+            _regionManager.RequestNavigate("main", typeof(TargetView).Name, param);
         }
+        #endregion
+
+        #region OnLoad
+        /// <summary>
+        /// 画面が読み込まれた時の処理を実装するための仮想関数
+        /// </summary>
+        /// <param name="sender">遷移元View</param>
+        /// <param name="args">パラメータ</param>
+        protected virtual void OnLoad(Type sender, NavigationParameters args)
+        {
+        }
+        #endregion
+
+        #region OnLeave
+        /// <summary>
+        /// 画面から離れる時の処理を実装するための仮想関数
+        /// </summary>
+        /// <param name="param">パラメータ</param>
+        protected virtual void OnLeave(NavigationParameters param)
+        {
+        }
+        #endregion
 
         /// <summary>
         /// 戻るボタン押下処理
         /// </summary>
+        /// <remarks>
+        /// 処理をカスタマイズしたい場合、このメソッドをオーバーライドしてください。
+        /// </remarks>
         protected virtual void OnBackButtonClick()
         {
+            // 戻るボタンが押された場合、Viewのインスタンスを破棄するよう設定。
+            this.KeepAlive = false;
+
             // ひとつ前の画面に戻る
             if (_journal != null) _journal.GoBack();
         }
 
         #region IConfirmNavigationRequest(INavigationAware)インターフェースメンバ
-            /// <summary>
-            /// 一度生成された画面のインスタンスを再使用するかを判定します。
-            /// 基本は再利用せず都度インスタンスを生成します。
-            /// </summary>
-            /// <remarks>
-            /// IRegionMemberLifetimeインターフェースメンバ、KeepAliveプロパティにより、
-            /// 常に破棄するよう設定しているため、このプロパティは無効。
-            /// </remarks>
-            /// <param name="navigationContext">ナビゲーション情報</param>
-            /// <returns>true:再利用する, false:再利用しない</returns>
+        /// <summary>
+        /// 一度生成された画面のインスタンスを再使用するかを判定します。
+        /// 基本は再利用せず都度インスタンスを生成します。
+        /// 変更する場合、オーバーライドしてください。
+        /// </summary>
+        /// <param name="navigationContext">ナビゲーション情報</param>
+        /// <returns>true:再利用する, false:再利用しない</returns>
         public virtual bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            return false;
+            return true;
+        }
+
+        /// <summary>
+        /// 画面遷移をキャンセルするか否かを判定するメソッド。
+        /// 判定を実装する場合、オーバーライドしてください。
+        /// </summary>
+        /// <param name="navigationContext">ナビゲーション情報</param>
+        /// <param name="continuationCallback"></param>
+        public virtual void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
+        {
+            // true :ナビゲーション実行
+            // false:ナビゲーションキャンセル
+            continuationCallback(true);
         }
 
         /// <summary>
         /// 画面に遷移してきたときに呼び出されるメソッド。
-        /// overrideする場合、基底クラスの処理を必ず呼び出すこと。
         /// </summary>
         /// <param name="navigationContext">ナビゲーション情報</param>
+        [Obsolete("INavigationAwareインターフェース実装用のメソッドです。画面遷移時の処理を実行する場合、OnLoadメソッドをオーバーライドしてください。")]
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
             _journal = navigationContext.NavigationService.Journal;
@@ -116,30 +181,25 @@ namespace NSS.HanbaiKanri.Common
 
             // バックボタン押下イベントを購読する。
             _backButtonClickToken = BackButtonClickPubSubEvent.Subscribe(this.EventAggregator, OnBackButtonClick);
+            
+            var tranSource = navigationContext.Parameters[TransitionSource_KEY];
+
+            this.OnLoad(this.GetType(), navigationContext.Parameters);
         }
 
         /// <summary>
-        /// 画面から遷移する前に呼び出されるメソッド。
-        /// overrideする場合、基底クラスの処理を必ず呼び出すこと。
+        /// 画面から離れる前に呼び出されるメソッド。
         /// </summary>
         /// <param name="navigationContext">ナビゲーション情報</param>
-        public virtual void OnNavigatedFrom(NavigationContext navigationContext)
+        [Obsolete("INavigationAwareインターフェース実装用のメソッドです。画面から離れる際の処理を実行する場合、OnLeaveメソッドをオーバーライドしてください。")]
+        public void OnNavigatedFrom(NavigationContext navigationContext)
         {
             // バックボタン押下イベントの購読停止。
             BackButtonClickPubSubEvent.UnSubscribe(_backButtonClickToken);
+
+            this.OnLeave(navigationContext.Parameters);
         }
 
-        /// <summary>
-        /// 画面遷移をキャンセルするか否かを判定するメソッド。
-        /// </summary>
-        /// <param name="navigationContext">ナビゲーション情報</param>
-        /// <param name="continuationCallback"></param>
-        public virtual void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
-        {
-            // true :ナビゲーション実行
-            // false:ナビゲーションキャンセル
-            continuationCallback(true);
-        }
         #endregion
 
         #region FindVisualChild

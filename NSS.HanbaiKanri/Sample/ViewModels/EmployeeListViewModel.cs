@@ -49,26 +49,14 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         #endregion
 
         /// <summary>
-        /// 画面初期表示イベント
-        /// <param name="navigationContext">ナビゲーション情報</param>
-        public override void OnNavigatedTo(NavigationContext navigationContext)
+        /// 初期表示イベント
+        /// </summary>
+        /// <param name="sender">遷移元View</param>
+        /// <param name="param">パラメータ</param>
+        protected override void OnLoad(Type sender, NavigationParameters args)
         {
-            // 基底クラスの処理＜＜必須＞＞
-            base.OnNavigatedTo(navigationContext);
-
             // 初期表示処理
             Model.InitAction();
-        }
-
-        /// <summary>
-        /// 画面終了前イベント
-        /// </summary>
-        /// <param name="navigationContext">ナビゲーション情報</param>
-        public override void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-            // 基底クラスの処理＜＜必須＞＞
-            base.OnNavigatedFrom(navigationContext);
-
         }
 
         /// <summary>

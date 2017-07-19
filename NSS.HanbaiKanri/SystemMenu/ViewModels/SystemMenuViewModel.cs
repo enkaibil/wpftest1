@@ -40,16 +40,6 @@ namespace NSS.HanbaiKanri.StartMenu.ViewModels
         }
 
         /// <summary>
-        /// 画面に遷移してきたときに呼び出されるメソッド
-        /// </summary>
-        /// <param name="navigationContext">引数</param>
-        public override void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            // 基底クラスの処理
-            base.OnNavigatedTo(navigationContext);
-        }
-
-        /// <summary>
         /// 社員マスタボタン押下イベント
         /// </summary>
         private void btnMMEmp_Click()
