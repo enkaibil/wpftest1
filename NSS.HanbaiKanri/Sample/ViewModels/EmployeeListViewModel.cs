@@ -55,22 +55,11 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         /// <param name="param">パラメータ</param>
         protected override void OnLoad(Type sender, NavigationParameters args)
         {
-            // 初期表示処理
-            Model.InitAction();
-        }
-
-        /// <summary>
-        /// 画面インスタンスの破棄確認
-        /// </summary>
-        /// <param name="navigationContext">ナビゲーション情報</param>
-        public override bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            if(navigationContext.Parameters.Count() > 0)
+            if (this.IsInit)
             {
-                return false;
+                // 初期表示処理
+                Model.InitAction();
             }
-
-            return true;
         }
 
         /// <summary>

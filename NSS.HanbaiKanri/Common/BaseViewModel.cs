@@ -62,6 +62,8 @@ namespace NSS.HanbaiKanri.Common
         /// <summary>画面遷移時にViewのインスタンスを維持するかどうか</summary>
         public bool KeepAlive { get; set; }
 
+        /// <summary>初期表示フラグ</summary>
+        public bool IsInit { get; private set; }
         #endregion
 
         #endregion
@@ -73,6 +75,7 @@ namespace NSS.HanbaiKanri.Common
         public BaseViewModel() : base()
         {
             KeepAlive = true;
+            IsInit = true;
         }
         #endregion
 
@@ -117,8 +120,8 @@ namespace NSS.HanbaiKanri.Common
         /// <summary>
         /// 画面から離れる時の処理を実装するための仮想関数
         /// </summary>
-        /// <param name="param">パラメータ</param>
-        protected virtual void OnLeave(NavigationParameters param)
+        /// <param name="args">パラメータ</param>
+        protected virtual void OnLeave(NavigationParameters args)
         {
         }
         #endregion
@@ -141,7 +144,7 @@ namespace NSS.HanbaiKanri.Common
         #region IConfirmNavigationRequest(INavigationAware)インターフェースメンバ
         /// <summary>
         /// 一度生成された画面のインスタンスを再使用するかを判定します。
-        /// 基本は再利用せず都度インスタンスを生成します。
+        /// （基本は「true:再利用する」）
         /// 変更する場合、オーバーライドしてください。
         /// </summary>
         /// <param name="navigationContext">ナビゲーション情報</param>
@@ -185,6 +188,9 @@ namespace NSS.HanbaiKanri.Common
             var tranSource = navigationContext.Parameters[TransitionSource_KEY];
 
             this.OnLoad(this.GetType(), navigationContext.Parameters);
+
+            // 初期起動フラグを解除する。
+            this.IsInit = false;
         }
 
         /// <summary>
