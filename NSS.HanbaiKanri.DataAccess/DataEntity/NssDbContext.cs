@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dapper;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using NSS.HanbaiKanri.DataAccess.DataEntity.Models;
 using System;
 using System.Collections.Generic;
@@ -7,11 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Configuration;
+using System.Data.Common;
 
 namespace NSS.HanbaiKanri.DataAccess.DataEntity
 {
     public class NssDbContext : DbContext
     {
+        private class DateTimeNow
+        {
+            public DateTime Now { get; set; }
+        }
         #region DbSet定義
 
         /// <summary>社員マスタ</summary>
@@ -55,6 +62,28 @@ namespace NSS.HanbaiKanri.DataAccess.DataEntity
         {
             // 主キー(複合キー)の設定
             modelBuilder.Entity<Sample_M_Shubetsu>().HasKey(key => new { key.KBN, key.Code });
+        }
+        
+        public override int SaveChanges()
+        {
+            DateTime now = SQLQuery<DateTime>("SELECT GETDATE()").First();
+
+            return base.SaveChanges();
+        }
+
+        /// <summary>
+        /// クエリ(SELECT)の直接実行
+        /// </summary>
+        /// <typeparam name="T">マッピング型</typeparam>
+        /// <param name="selectSql">クエリ本文</param>
+        /// <returns>取得結果</returns>
+        public List<T> SQLQuery<T>(string selectSql)
+        {
+            DbConnection conn = this.Database.GetDbConnection();
+            DbTransaction tran = (this.Database.CurrentTransaction == null) ?
+                null : this.Database.CurrentTransaction.GetDbTransaction();
+
+            return conn.Query<T>(selectSql, transaction: tran).ToList();
         }
     }
 }

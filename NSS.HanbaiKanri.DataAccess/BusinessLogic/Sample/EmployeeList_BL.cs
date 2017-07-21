@@ -56,15 +56,15 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
             {
                 try
                 {
-                    //context.Database.BeginTransaction();
-
+                    //db.Database.BeginTransaction();
+                    
                     param.ResultData = be.SelectEmployeeList(db, param.YakushokuCode, param.KeyWord);
 
-                    //context.Database.CommitTransaction();
+                    //db.Database.CommitTransaction();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    //context.Database.RollbackTransaction();
+                    //db.Database.RollbackTransaction();
                 }
             }
 

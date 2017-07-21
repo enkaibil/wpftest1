@@ -8,7 +8,6 @@
         xmlns:local="clr-namespace:NSS.HanbaiKanri.Common.Controls"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:model="clr-namespace:NSS.HanbaiKanri.Common.Models"
-        xmlns:Interactivity="clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.NET45"
         x:Class="NSS.HanbaiKanri.Common.Controls.Views.ShellView"
         mc:Ignorable="d"
         Title="shell" Height="711" Width="1012" MinWidth="1012" MinHeight="711">

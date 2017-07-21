@@ -4,7 +4,6 @@ using NSS.HanbaiKanri.StartMenu.Views;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Regions;
-using Reactive.Bindings;
 using System;
 using System.Collections.Generic;
 using System.IO.Packaging;
