@@ -60,6 +60,10 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
                 // 初期表示処理
                 Model.InitAction();
             }
+            else
+            {
+                // 画面に戻ってきた場合の処理
+            }
         }
 
         /// <summary>

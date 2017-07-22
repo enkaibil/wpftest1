@@ -60,7 +60,7 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
 
                     //db.Database.CommitTransaction();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     //db.Database.RollbackTransaction();
                     throw;
