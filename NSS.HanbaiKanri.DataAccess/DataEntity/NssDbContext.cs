@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Configuration;
 using System.Data.Common;
+using NSS.HanbaiKanri.DataAccess.DataEntity.Common;
 
 namespace NSS.HanbaiKanri.DataAccess.DataEntity
 {
+    /// <summary>
+    /// ＤＢコンテキストクラス
+    /// </summary>
     public class NssDbContext : DbContext
     {
-        private class DateTimeNow
-        {
-            public DateTime Now { get; set; }
-        }
         #region DbSet定義
 
         /// <summary>社員マスタ</summary>
@@ -45,7 +45,7 @@ namespace NSS.HanbaiKanri.DataAccess.DataEntity
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             // 接続文字列の設定
-            string conn = ConfigurationManager.ConnectionStrings["conStr"].ConnectionString;
+            string conn = DBSettings.Values[DBSettings.SettingID.ConnectionString];
             options.UseSqlServer(conn);
 
             // デバッグログの出力設定
@@ -57,16 +57,42 @@ namespace NSS.HanbaiKanri.DataAccess.DataEntity
         /// <summary>
         /// Fluent API 方式によるO/Rマッピング情報設定用メソッド
         /// </summary>
-        /// <param name="modelBuilder"></param>
+        /// <param name="modelBuilder">モデルビルダー</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // 主キー(複合キー)の設定
             modelBuilder.Entity<Sample_M_Shubetsu>().HasKey(key => new { key.KBN, key.Code });
         }
-        
+
+        /// <summary>
+        /// コンテキストに対する全ての変更をＤＢに保存します。
+        /// </summary>
+        /// <returns>処理件数</returns>
         public override int SaveChanges()
         {
+            // 現在日付の取得
             DateTime now = SQLQuery<DateTime>("SELECT GETDATE()").First();
+            
+            var entities = from e in this.ChangeTracker.Entries()
+                           where e.State == EntityState.Added || e.State == EntityState.Modified
+                           select e;
+            foreach (var entity in entities)
+            {
+                // 登録日の更新
+                if (entity.State == EntityState.Added)
+                {
+                    
+                    entity.Property("InputDate").CurrentValue = now;
+                    entity.Property("InputUser").CurrentValue = Environment.UserName;
+                }
+
+                // 更新日の設定
+                if(entity.State == EntityState.Added || entity.State == EntityState.Modified)
+                {
+                    entity.Property("UpdateDate").CurrentValue = now;
+                    entity.Property("UpdateUser").CurrentValue = Environment.UserName;
+                }
+            }
 
             return base.SaveChanges();
         }

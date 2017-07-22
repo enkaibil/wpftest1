@@ -8,11 +8,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NSS.HanbaiKanri.DataAccess.DataEntity.Models
 {
+    /// <summary>
+    /// 種別区分
+    /// </summary>
     public class ShubetsuKbn
     {
+        /// <summary>役職</summary>
         public const int Yakushoku = 1;
     }
 
+    /// <summary>
+    /// サンプルコードマスタモデルクラス
+    /// </summary>
     public class Sample_M_Shubetsu
     {
         /// <summary>区分</summary>

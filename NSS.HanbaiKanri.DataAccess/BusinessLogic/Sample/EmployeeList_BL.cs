@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Storage;
 using NSS.HanbaiKanri.DataAccess.DataEntity;
 using NSS.HanbaiKanri.DataAccess.DataEntity.Models;
-using NSS.HanbaiKanri.DataAccess.DataEntity.Common;
 using NSS.HanbaiKanri.DataAccess.DataEntity.Sample;
 
 namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
@@ -62,9 +60,10 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
 
                     //db.Database.CommitTransaction();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     //db.Database.RollbackTransaction();
+                    throw;
                 }
             }
 

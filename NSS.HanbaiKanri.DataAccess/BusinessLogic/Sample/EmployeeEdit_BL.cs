@@ -1,7 +1,5 @@
 ﻿using NSS.HanbaiKanri.DataAccess.DataEntity;
-using NSS.HanbaiKanri.DataAccess.DataEntity.Common;
 using NSS.HanbaiKanri.DataAccess.DataEntity.Models;
-using NSS.HanbaiKanri.DataAccess.DataEntity.Sample;
 using System;
 using System.Collections.Generic;
 using System.Linq;

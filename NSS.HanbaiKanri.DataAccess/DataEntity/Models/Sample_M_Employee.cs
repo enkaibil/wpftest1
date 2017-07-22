@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace NSS.HanbaiKanri.DataAccess.DataEntity.Models
 {
+    /// <summary>
+    /// サンプル社員マスタモデルクラス
+    /// </summary>
     public class Sample_M_Employee
     {
         /// <summary>社員番号</summary>
