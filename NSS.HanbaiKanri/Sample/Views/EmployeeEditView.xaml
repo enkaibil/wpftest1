@@ -18,12 +18,14 @@
         </Common:HamburgerMenuPanel>
         <TabControl Grid.Column="1" Margin="0,20,0,0" >
             <TabItem Header="基礎情報">
-                <StackPanel Grid.Column="1" Background="{StaticResource PageBackColor}">
-                    <StackPanel Orientation="Horizontal" Margin="10,10,10,5">
-                        <TextBlock Width="100" Text="社員コード" VerticalAlignment="Center" />
-                        <TextBox Width="80" IsReadOnly="True" Text="{Binding Model.ShainCode}" />
-                    </StackPanel>
-                    <!--<Grid Margin="10, 5, 10, 5">
+                <!-- ↓子要素に対する装飾（エラー表示等）の維持 -->
+                <AdornerDecorator>
+                    <StackPanel Grid.Column="1" Background="{StaticResource PageBackColor}">
+                        <StackPanel Orientation="Horizontal" Margin="10,10,10,5">
+                            <TextBlock Width="100" Text="社員コード" VerticalAlignment="Center" />
+                            <TextBox Width="80" IsReadOnly="True" Text="{Binding Model.ShainCode}" />
+                        </StackPanel>
+                        <!--<Grid Margin="10, 5, 10, 5">
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
@@ -44,58 +46,61 @@
                             <TextBox Grid.Row="2" Grid.Column="1" Width="100" HorizontalAlignment="Left" />
                             <TextBox Grid.Row="2" Grid.Column="2" Width="100" HorizontalAlignment="Left" />
                         </Grid>-->
-                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
-                        <TextBlock Width="100" Text="社員氏名" VerticalAlignment="Center" />
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="姓" VerticalAlignment="Center" Padding="0,0,5,0" />
-                            <TextBox Width="100" Text="{Binding Model.ShainName_Sei}" />
+                        <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                            <TextBlock Width="100" Text="社員氏名" VerticalAlignment="Center" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="姓" VerticalAlignment="Center" Padding="0,0,5,0" />
+                                <TextBox Width="100" Text="{Binding Model.ShainName_Sei}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="名" VerticalAlignment="Center" Padding="10,0,5,0" />
+                                <TextBox Width="100" Text="{Binding Model.ShainName_Mei}" />
+                            </StackPanel>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="名" VerticalAlignment="Center" Padding="10,0,5,0" />
-                            <TextBox Width="100" Text="{Binding Model.ShainName_Mei}" />
+                        <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                            <TextBlock Width="100" Text="社員氏名(カナ)" VerticalAlignment="Center" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="姓" VerticalAlignment="Center" Padding="0,0,5,0" />
+                                <TextBox Width="100" Text="{Binding Model.ShainName_Kana_Sei}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="名" VerticalAlignment="Center" Padding="10,0,5,0" />
+                                <TextBox Width="100" Text="{Binding Model.ShainName_Kana_Mei}" />
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
-                        <TextBlock Width="100" Text="社員氏名(カナ)" VerticalAlignment="Center" />
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="姓" VerticalAlignment="Center" Padding="0,0,5,0" />
-                            <TextBox Width="100" Text="{Binding Model.ShainName_Kana_Sei}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="名" VerticalAlignment="Center" Padding="10,0,5,0" />
-                            <TextBox Width="100" Text="{Binding Model.ShainName_Kana_Mei}" />
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
-                        <TextBlock Width="100" Text="役職" VerticalAlignment="Center" />
-                        <ComboBox Width="120" 
+                        <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                            <TextBlock Width="100" Text="役職" VerticalAlignment="Center" />
+                            <ComboBox Width="120" 
                                   ItemsSource="{Binding Model.YakushokuList}" DisplayMemberPath="Name"
                                   SelectedValue="{Binding Model.YakushokuCode}" SelectedValuePath="Code" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                            <TextBlock Width="100" Text="年齢" VerticalAlignment="Center" />
+                            <TextBox Width="40" Text="{Binding Model.Age}" HorizontalContentAlignment="Right" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                            <TextBlock Width="100" Text="給料" VerticalAlignment="Center" />
+                            <TextBox Width="100" Text="{Binding Model.Salary, StringFormat=#\,##0}" HorizontalContentAlignment="Right" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                            <TextBlock Width="100" Text="入社年月日" VerticalAlignment="Center" />
+                            <DatePicker />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                            <TextBlock Width="100" Text="退職" VerticalAlignment="Center" />
+                            <CheckBox VerticalContentAlignment="Center" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                            <TextBlock Width="100" Text="記事" VerticalAlignment="Top" />
+                            <TextBox Width="500" Height="60" AcceptsReturn="True" />
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
-                        <TextBlock Width="100" Text="年齢" VerticalAlignment="Center" />
-                        <TextBox Width="40" Text="{Binding Model.Age}" HorizontalContentAlignment="Right" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
-                        <TextBlock Width="100" Text="給料" VerticalAlignment="Center" />
-                        <TextBox Width="100" Text="{Binding Model.Salary, StringFormat=#\,##0}" HorizontalContentAlignment="Right" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
-                        <TextBlock Width="100" Text="入社年月日" VerticalAlignment="Center" />
-                        <DatePicker />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
-                        <TextBlock Width="100" Text="退職" VerticalAlignment="Center" />
-                        <CheckBox VerticalContentAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
-                        <TextBlock Width="100" Text="記事" VerticalAlignment="Top" />
-                        <TextBox Width="500" Height="60" AcceptsReturn="True" />
-                    </StackPanel>
-                </StackPanel>
+                </AdornerDecorator>
             </TabItem>
             <TabItem Header="TabItem">
-                <Grid />
+                <AdornerDecorator>
+                    <Grid />
+                </AdornerDecorator>
             </TabItem>
         </TabControl>
     </Grid>

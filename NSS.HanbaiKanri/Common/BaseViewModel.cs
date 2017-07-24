@@ -1,31 +1,26 @@
 ﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Prism.Mvvm;
-using Prism.Regions;
-using Microsoft.Practices.Unity;
-using NSS.HanbaiKanri.Common.Models;
 using System.Windows.Controls;
-using Prism.Events;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
-using NSS.HanbaiKanri.Common.Controls;
+using Prism.Mvvm;
+using Prism.Regions;
+using Prism.Events;
+using NSS.HanbaiKanri.Common.Models;
 using NSS.HanbaiKanri.Common.Controls.ViewModels;
+using Microsoft.Practices.Unity;
 
 namespace NSS.HanbaiKanri.Common
 {
     public abstract class BaseViewModel : BindableBase, IConfirmNavigationRequest, IRegionMemberLifetime
     {
-        #region 定数定義
-
-        /// <summary>遷移元画面情報保存用キー名称</summary>
-        private const string TransitionSource_KEY = "__TransitionSource_KEY";
-
-        #endregion
-
         #region 変数定義
 
         /// <summary>リージョンナビゲーションジャーナル</summary>
@@ -40,7 +35,7 @@ namespace NSS.HanbaiKanri.Common
         #endregion
 
         #region プロパティ定義
-        
+
         /// <summary>ウィンドウタイトル</summary>
         public abstract string Title { get; }
 
@@ -57,14 +52,8 @@ namespace NSS.HanbaiKanri.Common
             set { _regionManager = value; }
         }
 
-        #region IRegionMemberLifetimeインターフェースメンバ
-
-        /// <summary>画面遷移時にViewのインスタンスを維持するかどうか</summary>
-        public bool KeepAlive { get; set; }
-
         /// <summary>初期表示フラグ</summary>
         public bool IsInit { get; private set; }
-        #endregion
 
         #endregion
 
@@ -98,13 +87,10 @@ namespace NSS.HanbaiKanri.Common
         protected void RequestNavigate<TargetView>(NavigationParameters param)
         where TargetView : UserControl
         {
-            // 遷移元のView情報を格納しておく
-            param.Add(TransitionSource_KEY, this.GetType());
-
             _regionManager.RequestNavigate("main", typeof(TargetView).Name, param);
         }
         #endregion
-
+        
         #region OnLoad
         /// <summary>
         /// 画面が読み込まれた時の処理を実装するための仮想関数
@@ -126,8 +112,9 @@ namespace NSS.HanbaiKanri.Common
         }
         #endregion
 
+        #region OnBackButtonClick
         /// <summary>
-        /// 戻るボタン押下処理
+        /// 戻るボタン押下処理用仮想関数
         /// </summary>
         /// <remarks>
         /// 処理をカスタマイズしたい場合、このメソッドをオーバーライドしてください。
@@ -140,6 +127,14 @@ namespace NSS.HanbaiKanri.Common
             // ひとつ前の画面に戻る
             if (_journal != null) _journal.GoBack();
         }
+        #endregion
+
+        #region IRegionMemberLifetimeインターフェースメンバ
+
+        /// <summary>画面遷移時にViewのインスタンスを維持するかどうか</summary>
+        public bool KeepAlive { get; set; }
+
+        #endregion
 
         #region IConfirmNavigationRequest(INavigationAware)インターフェースメンバ
         /// <summary>
@@ -184,8 +179,6 @@ namespace NSS.HanbaiKanri.Common
 
             // バックボタン押下イベントを購読する。
             _backButtonClickToken = BackButtonClickPubSubEvent.Subscribe(this.EventAggregator, OnBackButtonClick);
-            
-            var tranSource = navigationContext.Parameters[TransitionSource_KEY];
 
             this.OnLoad(this.GetType(), navigationContext.Parameters);
 

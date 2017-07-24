@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\BindableValidatableBase.cs" />
     <Compile Include="Common\Bootstrapper.cs" />
     <Compile Include="Common\Controls\Views\HamburgerMenuItem.xaml.cs">
       <DependentUpon>HamburgerMenuItem.xaml</DependentUpon>

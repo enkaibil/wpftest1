@@ -1,18 +1,19 @@
-﻿using Prism.Mvvm;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NSS.HanbaiKanri.Common;
 using NSS.HanbaiKanri.DataAccess.DataEntity.Models;
 using NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample;
+using System.ComponentModel.DataAnnotations;
 
 namespace NSS.HanbaiKanri.Sample.Models
 {
     /// <summary>
     /// 社員マスタ登録画面用Modelクラス
     /// </summary>
-    public class EmployeeEditModel : BindableBase
+    public class EmployeeEditModel : BindableValidatableBase
     {
         #region プロパティ
 
@@ -27,6 +28,7 @@ namespace NSS.HanbaiKanri.Sample.Models
         private Sample_M_Employee _employeeInfo;
 
         /// <summary>社員コード</summary>
+        [Required]
         public string ShainCode
         {
             get { return _shainCode; }
@@ -35,6 +37,7 @@ namespace NSS.HanbaiKanri.Sample.Models
         private string _shainCode = string.Empty;
 
         /// <summary>社員氏名 姓</summary>
+        [Required]
         public string ShainName_Sei
         {
             get { return _shainName_Sei; }
@@ -43,6 +46,7 @@ namespace NSS.HanbaiKanri.Sample.Models
         private string _shainName_Sei = string.Empty;
 
         /// <summary>社員氏名 名</summary>
+        [Required]
         public string ShainName_Mei
         {
             get { return _shainName_Mei; }
