@@ -91,6 +91,7 @@
       <DependentUpon>HamburgerMenuPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\Models\BackButtonClickPubSubEvent.cs" />
+    <Compile Include="Common\Models\Converter\BoolNegativeConverter.cs" />
     <Compile Include="Common\Models\HeaderInfoModel.cs" />
     <Compile Include="Common\Models\PageInfoPubSubEvent.cs" />
     <Compile Include="Common\Controls\Views\ShellView.xaml.cs">

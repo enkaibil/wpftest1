@@ -35,6 +35,9 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
 
         /// <summary>選択処理</summary>
         public DelegateCommand CMD_List_Select { get; }
+
+        /// <summary>追加ボタン押下</summary>
+        public DelegateCommand CMD_btnAdd_Click { get; }
         #endregion
 
         #region コンストラクタ
@@ -45,6 +48,7 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         {
             CMD_btnSearch_Click = new DelegateCommand(btnSearch_Click);
             CMD_List_Select = new DelegateCommand(List_Select);
+            CMD_btnAdd_Click = new DelegateCommand(btnAdd_Click);
         }
         #endregion
 
@@ -91,6 +95,15 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
                 // 画面遷移
                 this.RequestNavigate<EmployeeEditView>(param);
             }
+        }
+
+        /// <summary>
+        /// 追加ボタン押下イベント
+        /// </summary>
+        public void btnAdd_Click()
+        {
+            // 画面遷移
+            this.RequestNavigate<EmployeeEditView>();
         }
     }
 }

@@ -15,7 +15,17 @@ namespace NSS.HanbaiKanri.Sample.Models
     /// </summary>
     public class EmployeeEditModel : BindableValidatableBase
     {
+        private Sample_M_Employee _employeeInfo;
+
         #region プロパティ
+
+        /// <summary>新規フラグ</summary>
+        public bool IsNew
+        {
+            get { return _isNew; }
+            set { SetProperty(ref _isNew, value); }
+        }
+        private bool _isNew;
 
         /// <summary>役職一覧</summary>
         public List<Sample_M_Shubetsu> YakushokuList
@@ -25,7 +35,6 @@ namespace NSS.HanbaiKanri.Sample.Models
         }
         private List<Sample_M_Shubetsu> _yakushokuList = new List<Sample_M_Shubetsu>();
 
-        private Sample_M_Employee _employeeInfo;
 
         /// <summary>社員コード</summary>
         [Required]
@@ -131,8 +140,14 @@ namespace NSS.HanbaiKanri.Sample.Models
             // 役職一覧
             YakushokuList = result.YakushokuList;
 
-            if (!string.IsNullOrEmpty(shainCode))
+            if(string.IsNullOrEmpty(shainCode))
             {
+                // 社員番号のパラメータがない場合、新規フラグを立てる。
+                this.IsNew = true;
+            }
+            else
+            {
+                // 社員番号が存在する場合、取得データを画面に反映する。
                 this.ShainCode = result.Employee.ShainCode;
                 this.ShainName_Sei = result.Employee.ShainName_Sei;
                 this.ShainName_Mei = result.Employee.ShainName_Mei;

@@ -16,14 +16,15 @@
         <Common:HamburgerMenuPanel x:Name="menuPanel" Grid.Column="0">
             <Common:HamburgerMenuItem Alias="&#xE105;" Caption="保存" Command="{Binding CMD_List_Select}" />
         </Common:HamburgerMenuPanel>
-        <TabControl Grid.Column="1" Margin="0,20,0,0" >
+        <TabControl Grid.Column="1" Margin="0,20,0,0" Padding="0,2,0,0" >
             <TabItem Header="基礎情報">
                 <!-- ↓子要素に対する装飾（エラー表示等）の維持 -->
                 <AdornerDecorator>
                     <StackPanel Grid.Column="1" Background="{StaticResource PageBackColor}">
                         <StackPanel Orientation="Horizontal" Margin="10,10,10,5">
                             <TextBlock Width="100" Text="社員コード" VerticalAlignment="Center" />
-                            <TextBox Width="80" IsReadOnly="True" Text="{Binding Model.ShainCode}" />
+                            <TextBox Width="80" IsReadOnly="{Binding Model.IsNew, Converter={StaticResource Conv_BoolNeg}}" Text="{Binding Model.ShainCode}" >
+                            </TextBox>
                         </StackPanel>
                         <!--<Grid Margin="10, 5, 10, 5">
                             <Grid.RowDefinitions>

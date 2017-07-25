@@ -33,7 +33,7 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         protected override void OnLoad(Type sender, NavigationParameters args)
         {
             // 画面間パラメータの取得
-            string shainCode = args[EmployeeConst.ListSelectKey].ToString();
+            string shainCode = args[EmployeeConst.ListSelectKey]?.ToString();
 
             // 初期化処理
             Model.InitAction(shainCode);

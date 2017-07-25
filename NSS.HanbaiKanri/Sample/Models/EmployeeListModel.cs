@@ -95,6 +95,5 @@ namespace NSS.HanbaiKanri.Sample.Models
             EmployeeList_SearchResult value = this.EmployeeList_SelectedItem;
             return value.ShainCode;
         }
-
     }
 }
