@@ -1,5 +1,6 @@
 ﻿using NSS.HanbaiKanri.Common;
 using NSS.HanbaiKanri.Sample.Models;
+using Prism.Commands;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,23 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         }
         private EmployeeEditModel _model = new EmployeeEditModel();
 
+        #region Command定義
+
+        /// <summary>保存ボタン押下</summary>
+        public DelegateCommand CMD_btnSave_Click { get; }
+
+        #endregion
+
+        #region コンストラクタ
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public EmployeeEditViewModel() : base()
+        {
+            CMD_btnSave_Click = new DelegateCommand(btnSave_Click);
+        }
+        #endregion
+
         /// <summary>
         /// 初期表示イベント
         /// </summary>
@@ -37,6 +55,14 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
 
             // 初期化処理
             Model.InitAction(shainCode);
+        }
+
+        /// <summary>
+        /// 保存ボタン押下イベント
+        /// </summary>
+        private void btnSave_Click()
+        {
+
         }
     }
 }

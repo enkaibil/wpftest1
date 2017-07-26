@@ -118,7 +118,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\Common\BaseParam.cs" />
+    <Compile Include="BusinessLogic\Common\BLConst.cs" />
     <Compile Include="BusinessLogic\Sample\EmployeeEditInitParam.cs" />
+    <Compile Include="BusinessLogic\Sample\EmployeeEditSaveParam.cs" />
     <Compile Include="BusinessLogic\Sample\EmployeeEdit_BL.cs" />
     <Compile Include="DataEntity\Common\DBSettings.cs" />
     <Compile Include="DataEntity\Common\Encryptor.cs" />

@@ -158,8 +158,12 @@ namespace NSS.HanbaiKanri.Sample.Models
                 this.NyushaDate = result.Employee.NyushaDate;
                 this.TaishokuFlg = result.Employee.TaishokuFlg;
                 this.Kiji = result.Employee.Kiji;
-            }
-                    
+            }  
+        }
+
+        public void SaveAction()
+        {
+
         }
     }
 }
