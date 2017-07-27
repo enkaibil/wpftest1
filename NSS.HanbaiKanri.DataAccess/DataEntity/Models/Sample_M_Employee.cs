@@ -30,11 +30,11 @@ namespace NSS.HanbaiKanri.DataAccess.DataEntity.Models
         /// <summary>役職コード</summary>
         public string YakushokuCode { get; set; }
         /// <summary>年齢</summary>
-        public int Age { get; set; }
+        public int? Age { get; set; }
         /// <summary>入社年月日</summary>
-        public DateTime NyushaDate { get; set; }
+        public DateTime? NyushaDate { get; set; }
         /// <summary>月給</summary>
-        public decimal Salary { get; set; }
+        public decimal? Salary { get; set; }
         /// <summary>退職フラグ</summary>
         public bool TaishokuFlg { get; set; }
         /// <summary>記事</summary>

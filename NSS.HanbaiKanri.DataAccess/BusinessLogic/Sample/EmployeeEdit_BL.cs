@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static NSS.HanbaiKanri.DataAccess.BusinessLogic.Common.BLConst;
 
 namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
 {
@@ -46,9 +47,9 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
         /// <summary>
         /// 保存処理
         /// </summary>
-        /// <param name="isNew"></param>
-        /// <param name="saveData"></param>
-        public void Save(bool isNew, Sample_M_Employee saveData)
+        /// <param name="param">パラメータ</param>
+        /// <returns>処理結果</returns>
+        public EmployeeEditSaveParam Save(EmployeeEditSaveParam param)
         {
             Sample_M_Employee_DE de = new Sample_M_Employee_DE();
 
@@ -59,25 +60,38 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
                     // トランザクション開始
                     db.Database.BeginTransaction();
 
-                    if(isNew)
+                    // 登録処理
+                    if(param.InsertList != null && param.InsertList.Count > 0)
                     {
-
+                        de.Insert(db, param.InsertList);
                     }
-                    else
-                    {
 
+                    // 更新処理
+                    if(param.UpdateList != null && param.UpdateList.Count > 0)
+                    {
+                        de.Update(db, param.UpdateList);
+                    }
+
+                    // 削除処理
+                    if (param.DeleteList != null && param.DeleteList.Count > 0)
+                    {
+                        de.Delete(db, param.DeleteList);
                     }
 
                     // コミット処理
                     db.Database.CommitTransaction();
                 }
-                catch(Exception)
+                catch(Exception ex)
                 {
                     // ロールバック処理
                     db.Database.RollbackTransaction();
-                    throw;
+
+                    // ビジネスエラー判定
+                    param.CheckBusinessError(ex);
                 }
             }
+
+            return param;
         }
     }
 }

@@ -161,9 +161,46 @@ namespace NSS.HanbaiKanri.Sample.Models
             }  
         }
 
-        public void SaveAction()
+        /// <summary>
+        /// 保存処理
+        /// </summary>
+        /// <param name="isDelete">削除フラグ</param>
+        public void SaveAction(bool isDelete)
         {
+            //--------------------------------------------------
+            // 画面入力値の取得
+            //--------------------------------------------------
+            Sample_M_Employee empInfo = (_employeeInfo != null) ? _employeeInfo : new Sample_M_Employee();
+            if(this.IsNew) empInfo.ShainCode = this.ShainCode;
+            empInfo.ShainName_Sei = this.ShainName_Sei;
+            empInfo.ShainName_Mei = this.ShainName_Mei;
+            empInfo.ShainName_Kana_Sei = this.ShainName_Kana_Sei;
+            empInfo.ShainName_Kana_Mei = this.ShainName_Kana_Mei;
+            empInfo.Age = this.Age;
+            empInfo.Salary = this.Salary;
+            empInfo.NyushaDate = this.NyushaDate;
+            empInfo.TaishokuFlg = this.TaishokuFlg;
+            empInfo.Kiji = this.Kiji;
 
+            //--------------------------------------------------
+            // データ更新処理
+            //--------------------------------------------------
+            EmployeeEdit_BL bl = new EmployeeEdit_BL();
+            EmployeeEditSaveParam param = new EmployeeEditSaveParam();
+            if(this.IsNew)
+            {
+                param.InsertList.Add(empInfo);
+            }
+            else if(isDelete)
+            {
+                param.DeleteList.Add(empInfo);
+            }
+            else
+            {
+                param.UpdateList.Add(empInfo);
+            }
+
+            // 更新実行
         }
     }
 }
