@@ -7,6 +7,8 @@ using NSS.HanbaiKanri.Common;
 using NSS.HanbaiKanri.DataAccess.DataEntity.Models;
 using NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample;
 using System.ComponentModel.DataAnnotations;
+using static NSS.HanbaiKanri.DataAccess.BusinessLogic.Common.BLConst;
+using System.Windows;
 
 namespace NSS.HanbaiKanri.Sample.Models
 {
@@ -165,7 +167,7 @@ namespace NSS.HanbaiKanri.Sample.Models
         /// 保存処理
         /// </summary>
         /// <param name="isDelete">削除フラグ</param>
-        public void SaveAction(bool isDelete)
+        public BusinessErrorCode SaveAction(bool isDelete)
         {
             //--------------------------------------------------
             // 画面入力値の取得
@@ -201,6 +203,9 @@ namespace NSS.HanbaiKanri.Sample.Models
             }
 
             // 更新実行
+            param = bl.Save(param);
+
+            return param.BusinessError;
         }
     }
 }

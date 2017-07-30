@@ -8,10 +8,11 @@ using NSS.HanbaiKanri.DataAccess.DataEntity.Models;
 using NSS.HanbaiKanri.DataAccess.DataEntity.Models.Sample;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
+using NSS.HanbaiKanri.Common;
 
 namespace NSS.HanbaiKanri.Sample.Models
 {
-    public class EmployeeListModel : BindableBase
+    public class EmployeeListModel : BindableValidatableBase
     {
         #region プロパティ
 
@@ -93,7 +94,7 @@ namespace NSS.HanbaiKanri.Sample.Models
         public string SelectAction()
         {
             EmployeeList_SearchResult value = this.EmployeeList_SelectedItem;
-            return value.ShainCode;
+            return value?.ShainCode;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using NSS.HanbaiKanri.DataAccess.DataEntity.Models.Sample;
+﻿using NSS.HanbaiKanri.DataAccess.BusinessLogic.Common;
+using NSS.HanbaiKanri.DataAccess.DataEntity.Models.Sample;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
     /// <summary>
     /// サンプル検索パラメータクラス
     /// </summary>
-    public class SampleSearchParam
+    public class SampleSearchParam : BaseParam
     {
         /// <summary>検索役職コード</summary>
         public string YakushokuCode { get; set; } = string.Empty;
