@@ -63,7 +63,9 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample
                 catch (Exception ex)
                 {
                     //db.Database.RollbackTransaction();
-                    throw;
+
+                    // ビジネスエラー判定
+                    param.CheckBusinessError(ex);
                 }
             }
 

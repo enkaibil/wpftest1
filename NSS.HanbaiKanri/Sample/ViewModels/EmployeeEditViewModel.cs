@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static NSS.HanbaiKanri.DataAccess.BusinessLogic.Common.BLConst;
 
 namespace NSS.HanbaiKanri.Sample.ViewModels
 {
@@ -50,9 +51,8 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         /// <summary>
         /// 初期表示イベント
         /// </summary>
-        /// <param name="sender">遷移元View</param>
         /// <param name="args">パラメータ</param>
-        protected override void OnLoad(Type sender, NavigationParameters args)
+        public override void OnLoad(NavigationParameters args)
         {
             // 画面間パラメータの取得
             string shainCode = args[EmployeeConst.ListSelectKey]?.ToString();
@@ -64,9 +64,14 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         /// <summary>
         /// 保存ボタン押下イベント
         /// </summary>
-        private void btnSave_Click()
+        public void btnSave_Click()
         {
-            Model.SaveAction(false);
+            BusinessErrorCode errCode = Model.SaveAction(false);
+
+            if (errCode != BusinessErrorCode.Sucsess)
+            {
+                DialogService.ShowInformation("TEST");
+            }
         }
 
         /// <summary>

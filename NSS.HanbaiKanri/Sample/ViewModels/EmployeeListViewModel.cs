@@ -49,15 +49,19 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
             CMD_btnSearch_Click = new DelegateCommand(btnSearch_Click);
             CMD_List_Select = new DelegateCommand(List_Select);
             CMD_btnAdd_Click = new DelegateCommand(btnAdd_Click);
+
+            var ed = new NSS.HanbaiKanri.Sample.ViewModels.EmployeeEditViewModel();
+            ed.DialogService = new NSS.HanbaiKanri.Common.Models.TestDialogService();
+
+            ed.btnSave_Click();
         }
         #endregion
 
         /// <summary>
         /// 初期表示イベント
         /// </summary>
-        /// <param name="sender">遷移元View</param>
         /// <param name="param">パラメータ</param>
-        protected override void OnLoad(Type sender, NavigationParameters args)
+        public override void OnLoad(NavigationParameters args)
         {
             if (this.IsInit)
             {
@@ -86,7 +90,11 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
             // 選択処理
             string selectValue = Model.SelectAction();
 
-            if (!string.IsNullOrEmpty(selectValue))
+            if (string.IsNullOrEmpty(selectValue))
+            {
+                DialogService.ShowInformation("データが選択されていません。");
+            }
+            else
             {
                 // パラメータの設定
                 NavigationParameters param = new NavigationParameters();

@@ -39,6 +39,10 @@ namespace NSS.HanbaiKanri.Common
         /// <summary>ウィンドウタイトル</summary>
         public abstract string Title { get; }
 
+        /// <summary>ダイアログサービス</summary>
+        [Dependency]
+        public IDialogService DialogService { get; set; }
+
         /// <summary>イベントアグリゲーターオブジェクト</summary>
         [Dependency]
         public IEventAggregator EventAggregator { get; set; }
@@ -95,9 +99,8 @@ namespace NSS.HanbaiKanri.Common
         /// <summary>
         /// 画面が読み込まれた時の処理を実装するための仮想関数
         /// </summary>
-        /// <param name="sender">遷移元View</param>
         /// <param name="args">パラメータ</param>
-        protected virtual void OnLoad(Type sender, NavigationParameters args)
+        public virtual void OnLoad(NavigationParameters args)
         {
         }
         #endregion
@@ -107,7 +110,7 @@ namespace NSS.HanbaiKanri.Common
         /// 画面から離れる時の処理を実装するための仮想関数
         /// </summary>
         /// <param name="args">パラメータ</param>
-        protected virtual void OnLeave(NavigationParameters args)
+        public virtual void OnLeave(NavigationParameters args)
         {
         }
         #endregion
@@ -180,7 +183,7 @@ namespace NSS.HanbaiKanri.Common
             // バックボタン押下イベントを購読する。
             _backButtonClickToken = BackButtonClickPubSubEvent.Subscribe(this.EventAggregator, OnBackButtonClick);
 
-            this.OnLoad(this.GetType(), navigationContext.Parameters);
+            this.OnLoad(navigationContext.Parameters);
 
             // 初期起動フラグを解除する。
             this.IsInit = false;

@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using NSS.HanbaiKanri.Common.Models;
+using Prism.Mvvm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,11 +9,15 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Unity = Microsoft.Practices.Unity;
 
 namespace NSS.HanbaiKanri.Common
 {
     public class BindableValidatableBase : BindableBase, INotifyDataErrorInfo
     {
+        /// <summary>ダイアログサービス</summary>
+        [Unity.Dependency]
+        public IDialogService DialogService { get; set; }
 
         /// <summary>入力エラー管理コンテナ</summary>
         private ErrorsContainer<string> ErrorsContainer { get; }

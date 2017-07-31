@@ -58,6 +58,9 @@ namespace NSS.HanbaiKanri.Common
         {
             base.ConfigureContainer();
 
+            // ダイアログサービスの登録
+            this.Container.RegisterType<IDialogService, DialogService>();
+
             // Viewを全てobject型としてコンテナに登録しておく（RegionManagerで使うため）
             var views = (from x in AllClasses.FromLoadedAssemblies()
                          where (x.BaseType == typeof(Window) || x.BaseType == typeof(UserControl))
