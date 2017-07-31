@@ -164,6 +164,17 @@ namespace NSS.HanbaiKanri.Sample.Models
         }
 
         /// <summary>
+        /// 入力チェック処理
+        /// </summary>
+        /// <returns>結果</returns>
+        public bool ValidateInput()
+        {
+            base.ValidateProperties();
+
+            return !base.HasErrors;
+        }
+
+        /// <summary>
         /// 保存処理
         /// </summary>
         /// <param name="isDelete">削除フラグ</param>

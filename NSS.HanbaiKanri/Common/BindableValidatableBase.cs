@@ -56,6 +56,22 @@ namespace NSS.HanbaiKanri.Common
             return true;
         }
 
+        #region ValidateProperties
+        /// <summary> 
+        /// 全プロパティの検証を行う 
+        /// </summary> 
+        public void ValidateProperties()
+        {
+            foreach (var p in this.GetType().GetProperties())
+            {
+                object value = p.GetValue(this);
+                string propertyName = p.Name;
+
+                this.ValidateProperty(value, propertyName);
+            }
+        }
+        #endregion
+
         #region ValidateProperty
         /// <summary>
         /// プロパティの入力エラー検証を行います。

@@ -35,9 +35,14 @@ namespace NSS.HanbaiKanri
             object sender,
             DispatcherUnhandledExceptionEventArgs e)
         {
+            // ログ出力
 
+            // エラーメッセージ
             MessageBox.Show(e.Exception.ToString());
             e.Handled = true;
+
+            // アプリ終了
+            Environment.Exit(-1);
         }
     }
 }

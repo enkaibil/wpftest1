@@ -49,11 +49,6 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
             CMD_btnSearch_Click = new DelegateCommand(btnSearch_Click);
             CMD_List_Select = new DelegateCommand(List_Select);
             CMD_btnAdd_Click = new DelegateCommand(btnAdd_Click);
-
-            var ed = new NSS.HanbaiKanri.Sample.ViewModels.EmployeeEditViewModel();
-            ed.DialogService = new NSS.HanbaiKanri.Common.Models.TestDialogService();
-
-            ed.btnSave_Click();
         }
         #endregion
 

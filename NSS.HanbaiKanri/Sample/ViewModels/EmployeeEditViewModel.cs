@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using static NSS.HanbaiKanri.DataAccess.BusinessLogic.Common.BLConst;
 
 namespace NSS.HanbaiKanri.Sample.ViewModels
@@ -66,11 +67,30 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         /// </summary>
         public void btnSave_Click()
         {
+            // 入力チェック
+            if(!Model.ValidateInput())
+            {
+                DialogService.ShowWarning("画面に入力エラーがあります。");
+                return;
+            }
+
+            // 確認メッセージ
+            MessageBoxResult dr = DialogService.ShowConfirm("変更を保存しますか。");
+            if (dr != MessageBoxResult.OK) return;
+
             BusinessErrorCode errCode = Model.SaveAction(false);
 
-            if (errCode != BusinessErrorCode.Sucsess)
+            if (errCode == BusinessErrorCode.Sucsess)
             {
-                DialogService.ShowInformation("TEST");
+                // 完了メッセージの表示
+                DialogService.ShowInformation("保存しました。");
+
+                // 画面を閉じる。
+                base.OnBackButtonClick();
+            }
+            else
+            {
+                // エラー処理
             }
         }
 
