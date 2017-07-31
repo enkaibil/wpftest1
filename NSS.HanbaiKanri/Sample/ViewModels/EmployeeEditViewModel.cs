@@ -31,6 +31,9 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         /// <summary>保存ボタン押下</summary>
         public DelegateCommand CMD_btnSave_Click { get; }
 
+        /// <summary>削除ボタン押下</summary>
+        public DelegateCommand CMD_btnDel_Click { get; }
+
         #endregion
 
         #region コンストラクタ
@@ -40,6 +43,7 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         public EmployeeEditViewModel() : base()
         {
             CMD_btnSave_Click = new DelegateCommand(btnSave_Click);
+            CMD_btnDel_Click = new DelegateCommand(btnDel_Click);
         }
         #endregion
 
@@ -62,7 +66,15 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
         /// </summary>
         private void btnSave_Click()
         {
+            Model.SaveAction(false);
+        }
 
+        /// <summary>
+        /// 削除ボタン押下イベント
+        /// </summary>
+        private void btnDel_Click()
+        {
+            Model.SaveAction(true);
         }
     }
 }

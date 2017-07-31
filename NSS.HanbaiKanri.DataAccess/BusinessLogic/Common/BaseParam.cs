@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static NSS.HanbaiKanri.DataAccess.BusinessLogic.Common.BLConst;
 
 namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Common
 {
@@ -37,9 +39,13 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Common
         {
             BLConst.BusinessErrorCode result = BLConst.BusinessErrorCode.UnHandle;
 
-            if (ex is Exception)
+            if (ex.InnerException is SqlException && ((SqlException)ex.InnerException).Number == SqlErrorNumber.KEY_Duplicate)
             {
-                this.BusinessError = BLConst.BusinessErrorCode.UnHandle;
+                this.BusinessError = BLConst.BusinessErrorCode.DuplicateError;
+                this.Message = "既に登録済みのKEYです。";
+            }
+            else
+            {
                 throw ex;
             }
 

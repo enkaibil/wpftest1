@@ -42,5 +42,14 @@ namespace NSS.HanbaiKanri.DataAccess.BusinessLogic.Common
             /// <summary>削除</summary>
             Deleted
         }
+
+        /// <summary>
+        /// SQLエラーコード
+        /// </summary>
+        public class SqlErrorNumber
+        {
+            /// <summary>キー重複違反</summary>
+            public static int KEY_Duplicate = 2627;
+        }
     }
 }

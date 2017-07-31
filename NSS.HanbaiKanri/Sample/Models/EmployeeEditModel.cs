@@ -7,6 +7,7 @@ using NSS.HanbaiKanri.Common;
 using NSS.HanbaiKanri.DataAccess.DataEntity.Models;
 using NSS.HanbaiKanri.DataAccess.BusinessLogic.Sample;
 using System.ComponentModel.DataAnnotations;
+using static NSS.HanbaiKanri.DataAccess.BusinessLogic.Common.BLConst;
 
 namespace NSS.HanbaiKanri.Sample.Models
 {
@@ -201,6 +202,12 @@ namespace NSS.HanbaiKanri.Sample.Models
             }
 
             // 更新実行
+            param = bl.Save(param);
+
+            if(param.BusinessError != BusinessErrorCode.Sucsess)
+            {
+                string msg = param.Message;
+            }
         }
     }
 }

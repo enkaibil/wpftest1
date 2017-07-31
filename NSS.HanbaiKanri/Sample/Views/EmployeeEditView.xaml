@@ -14,7 +14,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Common:HamburgerMenuPanel x:Name="menuPanel" Grid.Column="0">
-            <Common:HamburgerMenuItem Alias="&#xE105;" Caption="保存" Command="{Binding CMD_List_Select}" />
+            <Common:HamburgerMenuItem Alias="&#xE105;" Caption="保存" Command="{Binding CMD_btnSave_Click}" />
         </Common:HamburgerMenuPanel>
         <TabControl Grid.Column="1" Margin="0,20,0,0" Padding="0,2,0,0" >
             <TabItem Header="基礎情報">
