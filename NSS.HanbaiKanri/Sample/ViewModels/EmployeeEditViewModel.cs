@@ -76,7 +76,7 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
 
             // 確認メッセージ
             MessageBoxResult dr = DialogService.ShowConfirm("変更を保存しますか。");
-            if (dr != MessageBoxResult.OK) return;
+            if (dr != MessageBoxResult.Yes) return;
 
             BusinessErrorCode errCode = Model.SaveAction(false);
 
