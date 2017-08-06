@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +70,7 @@ namespace NSS.HanbaiKanri.Common.Models
             dlg.InstructionText = "情報";
             dlg.Icon = TaskDialogStandardIcon.Information;
             dlg.StandardButtons = TaskDialogStandardButtons.Ok;
+            // オーナーウィンドウの設定
             if (SystemConst.Global.ActiveWindow != null)
             {
                 dlg.OwnerWindowHandle = new WindowInteropHelper(SystemConst.Global.ActiveWindow).Handle;
@@ -97,6 +97,7 @@ namespace NSS.HanbaiKanri.Common.Models
             dlg.InstructionText = "警告";
             dlg.Icon = TaskDialogStandardIcon.Warning;
             dlg.StandardButtons = TaskDialogStandardButtons.Ok;
+            // オーナーウィンドウの設定
             if (SystemConst.Global.ActiveWindow != null)
             {
                 dlg.OwnerWindowHandle = new WindowInteropHelper(SystemConst.Global.ActiveWindow).Handle;
@@ -122,6 +123,7 @@ namespace NSS.HanbaiKanri.Common.Models
             dlg.InstructionText = "エラー";
             dlg.Icon = TaskDialogStandardIcon.Error;
             dlg.StandardButtons = TaskDialogStandardButtons.Ok;
+            // オーナーウィンドウの設定
             if (SystemConst.Global.ActiveWindow != null)
             {
                 dlg.OwnerWindowHandle = new WindowInteropHelper(SystemConst.Global.ActiveWindow).Handle;
@@ -181,6 +183,12 @@ namespace NSS.HanbaiKanri.Common.Models
             dlg.Caption = SystemConst.SystemTitle;
             dlg.InstructionText = "確認";
             dlg.Icon = (TaskDialogStandardIcon)32514;
+            // オーナーウィンドウの設定
+            if (SystemConst.Global.ActiveWindow != null)
+            {
+                dlg.OwnerWindowHandle = new WindowInteropHelper(SystemConst.Global.ActiveWindow).Handle;
+                dlg.StartupLocation = TaskDialogStartupLocation.CenterOwner;
+            }
 
             var yesButton = new TaskDialogButton();
             yesButton.Text = "はい";
@@ -192,12 +200,6 @@ namespace NSS.HanbaiKanri.Common.Models
             noButton.Text = "いいえ";
             noButton.Click += (sender, e) => dlg.Close(TaskDialogResult.No);
             dlg.Controls.Add(noButton);
-
-            if (SystemConst.Global.ActiveWindow != null)
-            {
-                dlg.OwnerWindowHandle = new WindowInteropHelper(SystemConst.Global.ActiveWindow).Handle;
-                dlg.StartupLocation = TaskDialogStartupLocation.CenterOwner;
-            }
 
             // メッセージ本文
             dlg.Text = messageID;
@@ -218,6 +220,12 @@ namespace NSS.HanbaiKanri.Common.Models
             dlg.Caption = SystemConst.SystemTitle;
             dlg.InstructionText = "確認";
             dlg.Icon = TaskDialogStandardIcon.Warning;
+            // オーナーウィンドウの設定
+            if (SystemConst.Global.ActiveWindow != null)
+            {
+                dlg.OwnerWindowHandle = new WindowInteropHelper(SystemConst.Global.ActiveWindow).Handle;
+                dlg.StartupLocation = TaskDialogStartupLocation.CenterOwner;
+            }
 
             var yesButton = new TaskDialogButton();
             yesButton.Text = "はい";
@@ -230,25 +238,33 @@ namespace NSS.HanbaiKanri.Common.Models
             noButton.Click += (sender, e) => dlg.Close(TaskDialogResult.No);
             dlg.Controls.Add(noButton);
 
-            if (SystemConst.Global.ActiveWindow != null)
-            {
-                dlg.OwnerWindowHandle = new WindowInteropHelper(SystemConst.Global.ActiveWindow).Handle;
-                dlg.StartupLocation = TaskDialogStartupLocation.CenterOwner;
-            }
-
             // メッセージ本文
             dlg.Text = messageID;
 
             return dlg.Show();
         }
 
-        public void ShowOpenFile()
+        /// <summary>
+        /// ファイル選択ダイアログを表示します。
+        /// </summary>
+        /// <returns>選択ファイル名</returns>
+        public string ShowOpenFile()
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.InitialDirectory = "";
-            dlg.Title = "";
-            dlg.Filter = "";
-            //dlg.
+            string result = string.Empty;
+
+            // ファイル選択ダイアログ生成
+            CommonOpenFileDialog dlg = new CommonOpenFileDialog("ファイルを開く");
+            dlg.Filters.Add(new CommonFileDialogFilter("Excelファイル", "*.xlsx;*.xlsm"));
+            dlg.DefaultExtension = "xlsx";
+            //dlg.InitialDirectory = "";
+
+            // ダイアログ表示
+            if(dlg.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                result = dlg.FileName;
+            }
+
+            return result;
         }
 
     }
