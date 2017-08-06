@@ -29,7 +29,7 @@
                        IsOpen="{Binding ElementName=root, Path=IsMenuOpen}" PopupAnimation="Slide">
                     <StackPanel Background="{StaticResource MenuBackColor}">
                         <Border x:Name="popSpacer" Visibility="Hidden" Height="{Binding ElementName=spacer, Path=ActualHeight}" />
-                        <Controls:HamburgerMenuItem Alias="&#x2630;" Caption="メニュー" IsOpen="True" Click="btnMenu_Click" />
+                        <Controls:HamburgerMenuItem x:Name="popBtnMenu" Alias="&#x2630;" Caption="メニュー" IsOpen="True" Click="btnMenu_Click" />
                     </StackPanel>
                 </Popup>
             </DockPanel>

@@ -84,6 +84,13 @@ namespace NSS.HanbaiKanri.Common.Controls.Views
         {
             Popup popup = FindVisualChild<Popup>(this);
             StackPanel popupPanel = (StackPanel)popup.Child;
+
+            // 既に登録済みの要素があった場合、いったん削除する。
+            if(popupPanel.Children.Count > 2)
+            {
+                popupPanel.Children.RemoveRange(2, popupPanel.Children.Count - 2);
+            }
+
             foreach(UIElement item in this.Items)
             {
                 if (item is HamburgerMenuItem)

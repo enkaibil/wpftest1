@@ -30,8 +30,8 @@ namespace NSS.HanbaiKanri.DataAccess.DataEntity.Sample
 
             // コードマスタとJOINし、必要な項目のみ抽出
             var query2 = from row in query1
-                         join ysm in db.Sample_M_Shubetsu
-                         on row.YakushokuCode equals ysm.Code
+#warning 外部結合にする。
+                         join ysm in db.Sample_M_Shubetsu on row.YakushokuCode equals ysm.Code
                          where ysm.KBN == 1
                          select new EmployeeList_SearchResult
                          {
