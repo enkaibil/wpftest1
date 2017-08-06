@@ -184,7 +184,7 @@ namespace NSS.HanbaiKanri.Sample.Models
             // 画面入力値の取得
             //--------------------------------------------------
             Sample_M_Employee empInfo = (_employeeInfo != null) ? _employeeInfo : new Sample_M_Employee();
-            if(this.IsNew) empInfo.ShainCode = this.ShainCode;
+            if(this.IsNew) empInfo.ShainCode = this.ShainCode + "999999999999999999";
             empInfo.ShainName_Sei = this.ShainName_Sei;
             empInfo.ShainName_Mei = this.ShainName_Mei;
             empInfo.ShainName_Kana_Sei = this.ShainName_Kana_Sei;

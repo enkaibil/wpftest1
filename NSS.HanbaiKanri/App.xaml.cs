@@ -1,4 +1,5 @@
 ﻿using NSS.HanbaiKanri.Common;
+using NSS.HanbaiKanri.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -38,7 +39,7 @@ namespace NSS.HanbaiKanri
             // ログ出力
 
             // エラーメッセージ
-            MessageBox.Show(e.Exception.ToString());
+            new DialogService().ShowError(e.Exception);
             e.Handled = true;
 
             // アプリ終了

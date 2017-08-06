@@ -1,4 +1,5 @@
-﻿using NSS.HanbaiKanri.Common;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using NSS.HanbaiKanri.Common;
 using NSS.HanbaiKanri.Sample.Models;
 using Prism.Commands;
 using Prism.Regions;
@@ -75,8 +76,8 @@ namespace NSS.HanbaiKanri.Sample.ViewModels
             }
 
             // 確認メッセージ
-            MessageBoxResult dr = DialogService.ShowConfirm("変更を保存しますか。");
-            if (dr != MessageBoxResult.OK) return;
+            TaskDialogResult dr = DialogService.ShowConfirm("変更を保存しますか。");
+            if (dr != TaskDialogResult.Yes) return;
 
             BusinessErrorCode errCode = Model.SaveAction(false);
 

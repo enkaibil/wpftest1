@@ -3,14 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:prism="http://www.codeplex.com/prism" prismLib:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:prism="http://www.codeplex.com/prism"
         xmlns:prismLib="http://prismlibrary.com/"
         xmlns:local="clr-namespace:NSS.HanbaiKanri.Common.Controls"
+        xmlns:common="clr-namespace:NSS.HanbaiKanri.Common"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:model="clr-namespace:NSS.HanbaiKanri.Common.Models"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" prismLib:ViewModelLocator.AutoWireViewModel="True"
         x:Class="NSS.HanbaiKanri.Common.Controls.Views.ShellView"
         mc:Ignorable="d"
-        Title="shell" Height="711" Width="1012" MinWidth="1012" MinHeight="711">
+        x:Name="mainWindow"
+        Title="{x:Static common:SystemConst.SystemTitle}"
+        Height="711" Width="1012" MinWidth="1012" MinHeight="711">
     <i:Interaction.Behaviors>
         <!-- メニューコントロールボックス制御（閉じるボタン無効化） -->
         <model:SystemMenuBehavior IsCloseable="True" />
@@ -23,6 +27,13 @@
         <i:EventTrigger EventName="Closing">
             <i:InvokeCommandAction x:Name="FormClosing" />
         </i:EventTrigger>
+        <!-- 画面がアクティブになった時にアクティブな画面の情報を保持する。 -->
+        <i:EventTrigger EventName="Activated">
+            <ei:ChangePropertyAction
+                TargetObject="{Binding Source={x:Static common:SystemConst.Global}}"
+                PropertyName="ActiveWindow"
+                Value="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
     </i:Interaction.Triggers>
     <!-- メッセージボックス制御 -->
     <Grid x:Name="grid" Margin="2,0,2,2" Background="{StaticResource PageBackColor}">
@@ -30,6 +41,7 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <!-- コンテンツ部分 -->
         <!-- ヘッダー部 -->
         <StackPanel x:Name="header" Margin="0" Grid.Row="0" Orientation="Horizontal">
             <StackPanel.Background>
@@ -55,10 +67,9 @@
                    VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"
                    Margin="5,0,0,0" Foreground="White" />
         </StackPanel>
-        <!-- コンテンツ部分 -->
         <!-- 1000 x 640 デフォルトサイズ-->
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <ContentControl Name="main" IsTabStop="False" prismLib:RegionManager.RegionName="main" />
+            <ContentControl x:Name="main" IsTabStop="False" prismLib:RegionManager.RegionName="main" />
         </ScrollViewer>
     </Grid>
 </Window>

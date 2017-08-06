@@ -18,6 +18,7 @@ namespace NSS.HanbaiKanri.Common.Controls.ViewModels
         /// <summary>ウィンドウタイトル</summary>
         public override string Title { get { return "BLANK"; } }
 
+        /// <summary>ヘッダー情報</summary>
         public HeaderInfoModel HeaderInfo
         {
             get { return _headerInfo; }
