@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+    <connectionString>Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\HanbaiKanriSample\NSS.HanbaiKanri.DataAccess\DataEntity\SampleDB.mdf;Integrated Security=True</connectionString>
+</Configuration>

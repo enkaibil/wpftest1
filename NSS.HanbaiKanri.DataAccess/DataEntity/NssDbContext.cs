@@ -38,36 +38,40 @@ namespace NSS.HanbaiKanri.DataAccess.DataEntity
         }
         #endregion
 
+        //===========================================================================================
         /// <summary>
         /// コンテキストの設定
         /// </summary>
-        /// <param name="options">オプション</param>
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        /// <param name="optionsBuilder">オプション</param>
+        //===========================================================================================
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // 接続文字列の設定
-            string conn = DBSettings.Values[DBSettings.SettingID.ConnectionString];
-            options.UseSqlServer(conn);
+            string conn = DBSettings.Values[DBSettings.SettingID.HanbaiConStr];
+            optionsBuilder.UseSqlServer(conn);
 
-            // デバッグログの出力設定
-            ILoggerFactory logFactory = new LoggerFactory();
-            logFactory.AddDebug();
-            options.UseLoggerFactory(logFactory);
+            // ログの設定
+            optionsBuilder.EnableSensitiveDataLogging();
         }
 
+        //===========================================================================================
         /// <summary>
         /// Fluent API 方式によるO/Rマッピング情報設定用メソッド
         /// </summary>
         /// <param name="modelBuilder">モデルビルダー</param>
+        //===========================================================================================
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // 主キー(複合キー)の設定
             modelBuilder.Entity<Sample_M_Shubetsu>().HasKey(key => new { key.KBN, key.Code });
         }
 
+        //===========================================================================================
         /// <summary>
         /// コンテキストに対する全ての変更をＤＢに保存します。
         /// </summary>
         /// <returns>処理件数</returns>
+        //===========================================================================================
         public override int SaveChanges()
         {
             // 現在日付の取得
@@ -97,12 +101,14 @@ namespace NSS.HanbaiKanri.DataAccess.DataEntity
             return base.SaveChanges();
         }
 
+        //===========================================================================================
         /// <summary>
         /// クエリ(SELECT)の直接実行
         /// </summary>
         /// <typeparam name="T">マッピング型</typeparam>
         /// <param name="selectSql">クエリ本文</param>
         /// <returns>取得結果</returns>
+        //===========================================================================================
         public List<T> SQLQuery<T>(string selectSql)
         {
             DbConnection conn = this.Database.GetDbConnection();
